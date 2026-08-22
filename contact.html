@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | David's Portfolio</title>
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body>
+    <header>
+      <a href="portfolio.html" class="logo"><img src="logo.png" alt="My Company Logo" width="150" height="50">
+      <a href="#home" class="logo">
+        <span class="logo-soul">SOUL</span>
+        <span class="logo-program">PROGRAM</span>
+      </a>
+      <nav>
+        <a href="portfolio.html#home">Home</a>
+        <a href="portfolio.html#about">About</a>
+        <a href="portfolio.html#skill">Skills</a>
+        <a href="portfolio.html#videos">Videos</a>
+        <a href="portfolio.html#education">Education</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </header>
+    <section class="contact" id="contact">
+      <h2>Get In <span>Touch</span></h2>
+      <p>
+        I would love to hear about your project. Send a message and I will get back to you soon.
+      </p>
+      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="25a4d168-2bd3-4b1b-a3e6-20d0f61e5b95"/>
+        <input type="text" id="Name" name="name" placeholder="Your Name" autocomplete="name" required />
+        <input type="email" id="Email" name="email" placeholder="Your Email" autocomplete="email" required />
+        <input type="text" id="subject" name="subject" placeholder="Subject" />
+        <textarea id="Message" name="message" placeholder="Your Message" rows="6" required></textarea>
+        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="successMessage" role="status" aria-live="polite" hidden></p>
+    </section>
+    <script src="jss.js"></script>
+  </body>
+</html>
