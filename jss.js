@@ -56,3 +56,59 @@ if (actionButton && welcomeMessage) {
     });
 }
 
+const themeToggle = document.getElementById('themeToggle');
+const menuToggle = document.getElementById('menuToggle');
+const navigation = document.querySelector('nav');
+
+if (menuToggle && navigation) {
+    menuToggle.addEventListener('click', function () {
+        const isOpen = navigation.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        menuToggle.textContent = isOpen ? '×' : '☰';
+    });
+
+    navigation.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            navigation.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Open navigation menu');
+            menuToggle.textContent = '☰';
+        });
+    });
+}
+
+if (themeToggle) {
+    const savedTheme = localStorage.getItem('soul-theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeToggle.textContent = 'Dark';
+        themeToggle.setAttribute('aria-label', 'Switch to dark theme');
+    }
+
+    themeToggle.addEventListener('click', function () {
+        const lightTheme = document.body.classList.toggle('light-theme');
+        localStorage.setItem('soul-theme', lightTheme ? 'light' : 'dark');
+        themeToggle.textContent = lightTheme ? 'Dark' : 'Light';
+        themeToggle.setAttribute('aria-label', lightTheme ? 'Switch to dark theme' : 'Switch to light theme');
+    });
+}
+
+const revealItems = document.querySelectorAll('section, .project-card');
+
+if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(function (item) {
+        item.classList.add('reveal');
+        revealObserver.observe(item);
+    });
+}
+

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Education | Soul Program</title>
-    <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="style1.css?v=3" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -28,6 +28,7 @@
         <a href="educatio.html" class="active">Education</a>
         <a href="contact.html">Contact</a>
       </nav>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
     </header>
 
     <main>
@@ -197,5 +198,13 @@
     <script src="jss.js"></script>
       </section>
     </main>
+    <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+    <script>
+      window.botpress.init({
+        configUrl: "https://files.bpcontent.cloud/2026/08/26/03/20260826033612-725IQ3IF.json",
+        botId: "80adf627-a14d-4c8a-9e0d-5f6ba5fd41c6",
+        clientId: "f9e21cb6-f1f2-499e-b970-f26f0a12c942"
+      });
+    </script>
   </body>
 </html>
