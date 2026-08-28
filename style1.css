@@ -555,6 +555,84 @@ span {
   display: none;
 }
 
+.login-page {
+  align-items: center;
+}
+
+.login-panel {
+  width: min(100%, 48rem);
+  padding: 3.5rem;
+  background: #1a1a1a;
+  border: 1px solid #b74b4b;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 25px rgba(183, 75, 75, 0.2);
+}
+
+.login-panel h1 {
+  margin-bottom: 1rem;
+  font-size: 4.2rem;
+}
+
+.login-panel > p:not(.eyebrow):not(.login-note) {
+  color: #d8d8d8;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 2.5rem;
+}
+
+.login-form label {
+  margin-top: 0.8rem;
+  color: #f5f5f5;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 1.2rem;
+  background: #2a2a2a;
+  color: #fff;
+  border: 1px solid #b74b4b;
+  border-radius: 0.7rem;
+  font: inherit;
+  font-size: 1.6rem;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #d66666;
+}
+
+.login-form button {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: #b74b4b;
+  color: #fff;
+  border: 0;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.login-form button:hover {
+  background: #d66666;
+}
+
+.login-note {
+  margin-top: 1.5rem;
+  color: #e4a7a7;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
 .previous-btn {
   display: inline-block;
   margin-top: 1rem;
@@ -731,6 +809,14 @@ span {
 
   .contact-form {
     padding: 1.5rem;
+  }
+
+  .login-panel {
+    padding: 2rem;
+  }
+
+  .login-panel h1 {
+    font-size: 3.4rem;
   }
 }
 

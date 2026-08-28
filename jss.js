@@ -57,6 +57,8 @@ if (actionButton && welcomeMessage) {
 }
 
 const themeToggle = document.getElementById('themeToggle');
+const loginForm = document.getElementById('loginForm');
+const loginMessage = document.getElementById('loginMessage');
 const menuToggle = document.getElementById('menuToggle');
 const navigation = document.querySelector('nav');
 
@@ -91,6 +93,13 @@ if (themeToggle) {
         localStorage.setItem('soul-theme', lightTheme ? 'light' : 'dark');
         themeToggle.textContent = lightTheme ? 'Dark' : 'Light';
         themeToggle.setAttribute('aria-label', lightTheme ? 'Switch to dark theme' : 'Switch to light theme');
+    });
+}
+
+if (loginForm && loginMessage) {
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        loginMessage.textContent = 'This login form is ready for an authentication provider.';
     });
 }
 
