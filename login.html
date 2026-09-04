@@ -2,52 +2,153 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login & Sign Up</title>
+  <title>Soul Program | Access</title>
   <style>
-    body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f2f5; margin: 0; }
-    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 300px; }
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; margin-bottom: 5px; }
-    .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
-    button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    .toggle { margin-top: 15px; text-align: center; font-size: 14px; }
-    .toggle a { color: #007bff; text-decoration: none; cursor: pointer; }
-    .hidden { display: none; }
-    .message { margin-top: 10px; font-size: 14px; text-align: center; color: red; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #0d0d11;
+      margin: 0;
+      color: #e0e0e0;
+    }
+
+    .card {
+      background: #14141c;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #2a1a24;
+      box-shadow: 0 0 25px rgba(220, 20, 60, 0.15);
+      width: 320px;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-size: 24px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: #a0a0b0;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 12px;
+      box-sizing: border-box;
+      background: #09090d;
+      border: 1px solid #2a2a3a;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #ff2a4b;
+      box-shadow: 0 0 8px rgba(255, 42, 75, 0.4);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #ff2a4b 0%, #b30024 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .toggle {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #808090;
+    }
+
+    .toggle a {
+      color: #ff2a4b;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+
+    .toggle a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 13px;
+      text-align: center;
+      color: #ff4d6d;
+    }
   </style>
 </head>
 <body>
 
 <div class="card">
   <form id="loginForm">
-    <h2>Log In</h2>
+    <h2>Welcome back</h2>
     <div class="form-group">
-      <label for="loginEmail">Email</label>
-      <input type="email" id="loginEmail" required>
+      <label for="loginEmail">Email address</label>
+      <input type="email" id="loginEmail" placeholder="Enter your email" required>
     </div>
     <div class="form-group">
       <label for="loginPassword">Password</label>
-      <input type="password" id="loginPassword" required>
+      <input type="password" id="loginPassword" placeholder="••••••••" required>
     </div>
-    <button type="submit">Log In</button>
+    <button type="submit">Sign In</button>
     <div class="toggle">
       Don't have an account? <a id="showSignup">Sign Up</a>
     </div>
   </form>
 
   <form id="signupForm" class="hidden">
-    <h2>Sign Up</h2>
+    <h2>Create Account</h2>
     <div class="form-group">
-      <label for="signupEmail">Email</label>
-      <input type="email" id="signupEmail" required>
+      <label for="signupEmail">Email address</label>
+      <input type="email" id="signupEmail" placeholder="Enter your email" required>
     </div>
     <div class="form-group">
       <label for="signupPassword">Password</label>
-      <input type="password" id="signupPassword" required>
+      <input type="password" id="signupPassword" placeholder="••••••••" required>
     </div>
-    <button type="submit">Create Account</button>
+    <button type="submit">Register</button>
     <div class="toggle">
-      Already have an account? <a id="showLogin">Log In</a>
+      Already have an account? <a id="showLogin">Sign In</a>
     </div>
   </form>
 
