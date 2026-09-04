@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=portfolio.html" />
-    <title>Soul Program</title>
-  </head>
-  <body>
-    <p><a href="portfolio.html">Open Soul Program</a></p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Login & Sign Up</title>
+  <style>
+    body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f2f5; margin: 0; }
+    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 300px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; }
+    .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
+    button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .toggle { margin-top: 15px; text-align: center; font-size: 14px; }
+    .toggle a { color: #007bff; text-decoration: none; cursor: pointer; }
+    .hidden { display: none; }
+    .message { margin-top: 10px; font-size: 14px; text-align: center; color: red; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <form id="loginForm">
+    <h2>Log In</h2>
+    <div class="form-group">
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" required>
+    </div>
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" required>
+    </div>
+    <button type="submit">Log In</button>
+    <div class="toggle">
+      Don't have an account? <a id="showSignup">Sign Up</a>
+    </div>
+  </form>
+
+  <form id="signupForm" class="hidden">
+    <h2>Sign Up</h2>
+    <div class="form-group">
+      <label for="signupEmail">Email</label>
+      <input type="email" id="signupEmail" required>
+    </div>
+    <div class="form-group">
+      <label for="signupPassword">Password</label>
+      <input type="password" id="signupPassword" required>
+    </div>
+    <button type="submit">Create Account</button>
+    <div class="toggle">
+      Already have an account? <a id="showLogin">Log In</a>
+    </div>
+  </form>
+
+  <div id="statusMessage" class="message"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
 </html>
