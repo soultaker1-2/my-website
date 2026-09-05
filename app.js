@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const statusMessage = document.getElementById('statusMessage');
 
   // Set this variable to your main website's HTML file or full web address
-  const targetPage = 'https://soultaker1-2.github.io/my-website';
+  const targetPage = 'portfolio.html';
   // Toggle to Signup Form
   if (showSignup) {
     showSignup.addEventListener('click', () => {
