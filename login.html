@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Critical for mobile screen scaling -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soul Program | Access</title>
   <style>
@@ -18,7 +17,7 @@
       min-height: 100vh;
       background: #0d0d11;
       margin: 0;
-      padding: 20px; /* Prevents card from touching screen edges on mobile */
+      padding: 20px;
       color: #e0e0e0;
     }
 
@@ -28,8 +27,6 @@
       border-radius: 12px;
       border: 1px solid #2a1a24;
       box-shadow: 0 0 25px rgba(220, 20, 60, 0.15);
-      
-      /* Responsive sizing logic */
       width: 100%;
       max-width: 380px;
     }
@@ -58,15 +55,12 @@
 
     .form-group input {
       width: 100%;
-      padding: 12px; /* Increased tap target for mobile touchscreens */
+      padding: 12px;
       background: #09090d;
       border: 1px solid #2a2a3a;
       border-radius: 6px;
       color: #ffffff;
-      
-      /* Minimum 16px font-size prevents iOS Safari from auto-zooming on focus */
       font-size: 16px;
-      
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
@@ -78,7 +72,7 @@
 
     button {
       width: 100%;
-      padding: 14px; /* Slightly taller button for easier touch interaction */
+      padding: 14px;
       background: linear-gradient(135deg, #ff2a4b 0%, #b30024 100%);
       color: white;
       border: none;
@@ -112,7 +106,7 @@
       cursor: pointer;
       margin-left: 4px;
       display: inline-block;
-      padding: 4px 0; /* Expanded touch zone for links */
+      padding: 4px 0;
     }
 
     .toggle a:hover {
@@ -130,7 +124,6 @@
       color: #ff4d6d;
     }
 
-    /* Screen adjustments for small mobile devices */
     @media (max-width: 480px) {
       .card {
         padding: 24px 18px;
@@ -146,9 +139,8 @@
 <body>
 
 <div class="card">
-  <form id="loginForm">
-    action="portfolio.html"
-    method="GET"
+  <!-- Fixed action target to point to your live site -->
+  <form id="loginForm" action="https://soultaker1-2.github.io/my-website/" method="GET">
     <h2>Welcome back</h2>
     <div class="form-group">
       <label for="loginEmail">Email address</label>
@@ -164,7 +156,7 @@
     </div>
   </form>
 
-  <form id="signupForm" class="hidden">
+  <form id="signupForm" class="hidden" action="https://soultaker1-2.github.io/my-website/" method="GET">
     <h2>Create Account</h2>
     <div class="form-group">
       <label for="signupEmail">Email address</label>
