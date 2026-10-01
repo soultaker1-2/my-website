@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">How a CSS rule styles a page</title>
+  <desc id="desc">A CSS selector, property, and value lead to a styled heading.</desc>
+  <rect width="960" height="360" rx="24" fill="#17171a"/>
+  <text x="48" y="54" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">CSS / PRESENTATION</text>
+  <text x="48" y="92" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700">A rule connects a selector to a style</text>
+  <rect x="48" y="124" width="864" height="88" rx="14" fill="#24242a" stroke="#50505a" stroke-width="2"/>
+  <rect x="72" y="144" width="176" height="48" rx="8" fill="#25313d"/>
+  <text x="112" y="175" fill="#ffffff" font-family="Consolas, monospace" font-size="19">h1</text>
+  <text x="265" y="175" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="22" font-weight="700">selector</text>
+  <text x="390" y="175" fill="#cfcfd4" font-family="Arial, sans-serif" font-size="22">{</text>
+  <rect x="425" y="144" width="190" height="48" rx="8" fill="#342024"/>
+  <text x="445" y="175" fill="#ffffff" font-family="Consolas, monospace" font-size="18">color:</text>
+  <text x="627" y="175" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="22" font-weight="700">property</text>
+  <rect x="745" y="144" width="140" height="48" rx="8" fill="#b74b4b"/>
+  <text x="764" y="175" fill="#ffffff" font-family="Consolas, monospace" font-size="17">#d66666</text>
+  <text x="890" y="175" fill="#cfcfd4" font-family="Arial, sans-serif" font-size="22">}</text>
+  <text x="48" y="280" fill="#cfcfd4" font-family="Arial, sans-serif" font-size="18">The browser applies the rule to every matching heading:</text>
+  <text x="48" y="326" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="34" font-weight="700">A styled heading</text>
+  <rect x="48" y="337" width="864" height="5" rx="2" fill="#b74b4b"/>
+</svg>

@@ -26,9 +26,9 @@
         <a href="video.html">Videos</a>
         <a href="educatio.html" class="active">Education</a>
         <a href="contact.html">Contact</a>
-        <a href="login.html">Login</a>
       </nav>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch theme">Light</button>
     </header>
 
     <main>
@@ -37,8 +37,17 @@
           <img src="edu.jpg" alt="Education" />
         </div>
         <div class="home-content">
-          <h1 class="page-title"><span class="highlight">HTML</span> - What is HTML?</h1>
+          <nav class="lesson-nav" aria-label="Choose a learning level">
+            <a href="#html">Simple lessons</a>
+            <a href="#advanced">Advanced concepts</a>
+          </nav>
+          <p class="level-label">01 / Foundations</p>
+          <h1 class="page-title" id="html"><span class="highlight">HTML</span> - What is HTML?</h1>
           <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard language used to create and design pages on the World Wide Web. Think of it as the <strong>skeleton</strong> or structural blueprint of a website. It tells the web browser how to display text, images, links, and other media.</p>
+          <figure class="lesson-image">
+            <img src="html-structure.svg" alt="Diagram of a page divided into header, main content, and footer using HTML elements." />
+            <figcaption>HTML gives each part of a page a clear structure and meaning.</figcaption>
+          </figure>
 
           <hr>
 
@@ -64,6 +73,7 @@
           <h2>HTML vs. CSS vs. JavaScript</h2>
           <p>To build a fully functioning modern website, HTML usually works alongside two other core technologies:</p>
 
+          <div class="lesson-table-scroll">
           <table>
             <thead>
               <tr>
@@ -90,6 +100,7 @@
               </tr>
             </tbody>
           </table>
+          </div>
 
           <hr>
 
@@ -100,9 +111,26 @@
             <li><strong>High Compatibility:</strong> Every web browser natively supports HTML, meaning your creations can be viewed by anyone with an internet connection.</li>
           </ol>
 
-          <h2 class="section-title"><span>CSS</span> - What is CSS?</h2>
+          <div class="lesson-check" data-quiz data-answer="main" data-hint="Hint: this element contains the page's central content." data-correct-message="Correct. The main element identifies the page's central content.">
+            <h3>Quick check: HTML</h3>
+            <fieldset>
+              <legend>Which element holds the page's main content?</legend>
+              <label><input type="radio" name="html-check" value="header" /> &lt;header&gt;</label>
+              <label><input type="radio" name="html-check" value="main" /> &lt;main&gt;</label>
+              <label><input type="radio" name="html-check" value="footer" /> &lt;footer&gt;</label>
+            </fieldset>
+            <button class="quiz-submit" type="button">Check answer</button>
+            <p class="quiz-feedback" role="status" aria-live="polite"></p>
+          </div>
+
+          <p class="level-label">02 / Foundations</p>
+          <h2 class="section-title" id="css"><span>CSS</span> - What is CSS?</h2>
           <p><strong>CSS</strong> stands for <strong>Cascading Style Sheets</strong>. If HTML is the skeleton that builds the structure of a website, CSS is the <strong>clothing, makeup, and styling</strong> that makes it look good.</p>
           <p>Without CSS, every website would look like a plain text document with black Times New Roman text, blue links, and white backgrounds. CSS allows you to control the colors, fonts, layouts, and overall visual presentation of your web pages.</p>
+          <figure class="lesson-image">
+            <img src="css-rule.svg" alt="Diagram showing the h1 selector, color property, and red value producing a styled heading." />
+            <figcaption>A CSS rule selects an element, then applies property values to change its appearance.</figcaption>
+          </figure>
 
           <hr>
 
@@ -152,9 +180,26 @@
             <li><code>padding</code>: Adds space <em>inside</em> the border of an element.</li>
           </ul>
 
-          <h2 class="section-title"><span>JAVASCRIPT</span> - What is JavaScript?</h2>
+          <div class="lesson-check" data-quiz data-answer="color" data-hint="Hint: this property changes the foreground of text." data-correct-message="Correct. The color property sets an element's text color.">
+            <h3>Quick check: CSS</h3>
+            <fieldset>
+              <legend>Which property changes the color of text?</legend>
+              <label><input type="radio" name="css-check" value="margin" /> margin</label>
+              <label><input type="radio" name="css-check" value="color" /> color</label>
+              <label><input type="radio" name="css-check" value="padding" /> padding</label>
+            </fieldset>
+            <button class="quiz-submit" type="button">Check answer</button>
+            <p class="quiz-feedback" role="status" aria-live="polite"></p>
+          </div>
+
+          <p class="level-label">03 / Foundations</p>
+          <h2 class="section-title" id="javascript"><span>JAVASCRIPT</span> - What is JavaScript?</h2>
           <p><strong>JavaScript</strong> (often abbreviated as <strong>JS</strong>) is a powerful, lightweight programming language used to make web pages <strong>interactive</strong>.</p>
           <p>If HTML is the skeleton that structures a website, and CSS is the clothing that styles it, JavaScript is the <strong>brain and muscles</strong>. It allows web pages to respond to user actions, think logically, and dynamically update content.</p>
+          <figure class="lesson-image">
+            <img src="javascript-flow.svg" alt="Diagram of a button click triggering a JavaScript handler that updates page text." />
+            <figcaption>JavaScript connects user events to changes in the page.</figcaption>
+          </figure>
 
           <div class="interactive-box">
             <h3 id="welcome-message">Click the button below to see JS in action!</h3>
@@ -189,6 +234,100 @@
             <li><strong>Highly Versatile:</strong> Beyond websites, it is used to build mobile apps, desktop software, and servers.</li>
             <li><strong>Massive Community:</strong> It is consistently ranked as one of the most popular programming languages in the world.</li>
           </ol>
+
+          <div class="lesson-check" data-quiz data-answer="handler" data-hint="Hint: it is the function that runs in response to an event." data-correct-message="Correct. An event handler runs code in response to an event such as a click.">
+            <h3>Quick check: JavaScript</h3>
+            <fieldset>
+              <legend>What runs code in response to a click event?</legend>
+              <label><input type="radio" name="javascript-check" value="selector" /> A CSS selector</label>
+              <label><input type="radio" name="javascript-check" value="handler" /> An event handler</label>
+              <label><input type="radio" name="javascript-check" value="heading" /> An HTML heading</label>
+            </fieldset>
+            <button class="quiz-submit" type="button">Check answer</button>
+            <p class="quiz-feedback" role="status" aria-live="polite"></p>
+          </div>
+
+          <section class="advanced-lessons" id="advanced" aria-labelledby="advanced-title">
+            <p class="level-label">04 / Advanced</p>
+            <h2 id="advanced-title">Build beyond the basics</h2>
+            <p>These examples connect the fundamentals to techniques used in real projects. Read the plain-language summary, then study the code.</p>
+
+            <div class="advanced-grid">
+              <article class="advanced-topic">
+                <p class="lesson-tag">HTML / ACCESSIBILITY</p>
+                <h3>Use meaning, not just appearance</h3>
+                <p><strong>Simple:</strong> Semantic elements tell browsers what each part of a page is for. This helps assistive technology and makes code easier to maintain.</p>
+                <pre class="lesson-code"><code>&lt;main&gt;
+  &lt;article aria-labelledby="title"&gt;
+    &lt;h1 id="title"&gt;Lesson title&lt;/h1&gt;
+    &lt;p&gt;Lesson content...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+                <p><strong>Advanced:</strong> Keep heading levels in order, label form controls, and use ARIA only when native HTML cannot express the needed meaning.</p>
+              </article>
+
+              <article class="advanced-topic">
+                <p class="lesson-tag">CSS / RESPONSIVE LAYOUT</p>
+                <h3>Build layouts that adapt</h3>
+                <p><strong>Simple:</strong> Let the browser fit as many columns as the screen can hold instead of choosing a fixed number.</p>
+                <pre class="lesson-code"><code>.cards {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax( min(100%, 22rem), 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+}</code></pre>
+                <p><strong>Advanced:</strong> <code>minmax()</code> sets a safe minimum while <code>auto-fit</code> creates columns from available space. <code>clamp()</code> keeps gaps within readable limits.</p>
+              </article>
+
+              <article class="advanced-topic">
+                <p class="lesson-tag">JAVASCRIPT / ASYNC</p>
+                <h3>Handle data from a server</h3>
+                <p><strong>Simple:</strong> A request takes time. <code>async</code> and <code>await</code> let code wait for its result and handle failures clearly.</p>
+                <pre class="lesson-code"><code>async function loadLessons() {
+  const response = await fetch('/api/lessons');
+  if (!response.ok) {
+    throw new Error('Could not load lessons');
+  }
+  return response.json();
+}</code></pre>
+                <p><strong>Advanced:</strong> Check the response status before parsing data, and catch errors where the UI can show a useful recovery message.</p>
+                <p class="lesson-note">This example needs a server endpoint; it will not fetch data from this static site by itself.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="interactive-playground" id="playground" aria-labelledby="playground-title">
+            <p class="level-label">05 / Practice</p>
+            <h2 id="playground-title">Make a page your own</h2>
+            <p>Edit the HTML, CSS, or JavaScript, then update the preview to see what your code does.</p>
+
+            <div class="playground-layout">
+              <div class="playground-editors">
+                <div class="playground-field">
+                  <label for="playgroundHtml">HTML</label>
+                  <textarea id="playgroundHtml" rows="5" spellcheck="false"><h1>Hello, learner!</h1>
+<p>Change this text and update the preview.</p></textarea>
+                </div>
+                <div class="playground-field">
+                  <label for="playgroundCss">CSS</label>
+                  <textarea id="playgroundCss" rows="5" spellcheck="false">body { font-family: Arial, sans-serif; padding: 1.5rem; color: #202124; }
+h1 { color: #b74b4b; }</textarea>
+                </div>
+                <div class="playground-field">
+                  <label for="playgroundJs">JavaScript</label>
+                  <textarea id="playgroundJs" rows="5" spellcheck="false">document.querySelector('h1').addEventListener('click', () => {
+  document.querySelector('p').textContent = 'Nice work! You changed the page with JavaScript.';
+});</textarea>
+                </div>
+                <button class="playground-run" id="runPlayground" type="button">Update preview</button>
+              </div>
+              <div class="playground-result">
+                <h3>Preview</h3>
+                <iframe id="playgroundFrame" title="Your code preview" sandbox="allow-scripts"></iframe>
+              </div>
+            </div>
+            <p class="playground-status" id="playgroundStatus" role="status" aria-live="polite">Code runs inside an isolated preview.</p>
+          </section>
 
           <hr>
 

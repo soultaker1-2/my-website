@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="large-type">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,6 @@
         <a href="video.html">Videos</a>
         <a href="educatio.html">Education</a>
         <a href="contact.html">Contact</a>
-          <a href="login.html">Login</a>
       </nav>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch theme">Light</button>
@@ -51,7 +50,7 @@
             <a href="https://wa.me/2348082614122" target="_blank" aria-label="WhatsApp">
               <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="https://github.com" target="_blank" aria-label="GitHub">
+            <a href="https://soultaker1-2.github.io/my-website/" target="_blank" rel="noopener noreferrer" aria-label="Soul Program on GitHub Pages" title="Soul Program on GitHub Pages">
               <i class="fab fa-github"></i>
             </a>
             <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
@@ -60,6 +59,34 @@
           </div>
 
           <a href="contact.html" class="contact-btn">Get In Touch</a>
+        </div>
+      </section>
+
+      <section class="learning-paths" id="learning">
+        <div class="section-heading">
+          <p class="eyebrow">Learn web development</p>
+          <h2>Start with the <span>foundations</span></h2>
+          <p>Follow the path from structuring a page to styling it and making it interactive.</p>
+        </div>
+        <div class="learning-grid">
+          <a class="project-card learning-card learning-card-first" href="educatio.html#html">
+            <span class="learning-step">01 / START HERE</span>
+            <h3>HTML</h3>
+            <p>Learn how to structure web pages with headings, text, links, images, and more.</p>
+            <span class="learning-link">Start the first lesson</span>
+          </a>
+          <a class="project-card learning-card" href="educatio.html#css">
+            <span class="learning-step">02 / STYLE</span>
+            <h3>CSS</h3>
+            <p>Style your pages with colors, typography, spacing, and responsive layouts.</p>
+            <span class="learning-link">Explore CSS</span>
+          </a>
+          <a class="project-card learning-card" href="educatio.html#javascript">
+            <span class="learning-step">03 / INTERACT</span>
+            <h3>JavaScript</h3>
+            <p>Add behavior and make your pages respond to the people using them.</p>
+            <span class="learning-link">Explore JavaScript</span>
+          </a>
         </div>
       </section>
 
@@ -78,34 +105,40 @@
 
       <section class="work" id="work">
         <div class="section-heading">
-          <p class="eyebrow">Selected work</p>
-          <h2>Built with <span>purpose</span></h2>
-          <p>Small, focused digital experiences with clear structure, useful interactions, and a sharp visual finish.</p>
+          <p class="eyebrow">Explore Soul Program</p>
+          <h2>Learn by <span>building</span></h2>
+          <p>Choose a lesson, watch a walkthrough, or explore practical examples as you build your web skills.</p>
         </div>
         <div class="project-grid">
-          <article class="project-card">
-            <div class="project-number">01</div>
-            <h3>Portfolio Experience</h3>
-            <p>A responsive personal site designed to make skills, story, and contact details easy to explore.</p>
+          <article class="project-card resource-card">
+            <div class="project-number">01 / FOUNDATIONS</div>
+            <h3>Learn the foundations</h3>
+            <p>Understand page structure, visual styling, and interaction through simple explanations and examples.</p>
             <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <a class="resource-link" href="educatio.html#html">Start with HTML</a>
           </article>
-          <article class="project-card featured-project">
-            <div class="project-number">02</div>
-            <h3>AI Portfolio Guide</h3>
-            <p>A Botpress assistant that helps visitors discover David's work, education, services, and experience.</p>
-            <div class="project-tags"><span>Botpress</span><span>Webchat</span><span>UX</span></div>
+          <article class="project-card resource-card featured-project">
+            <div class="project-number">02 / WATCH</div>
+            <h3>Follow a walkthrough</h3>
+            <p>Watch practical videos about responsive design, web layouts, and building small projects.</p>
+            <div class="project-tags"><span>Video</span><span>Responsive design</span></div>
+            <a class="resource-link" href="video.html">Browse video lessons</a>
           </article>
-          <article class="project-card">
-            <div class="project-number">03</div>
-            <h3>Web Learning Hub</h3>
-            <p>A practical learning space explaining HTML, CSS, and JavaScript through structured examples.</p>
-            <div class="project-tags"><span>Education</span><span>Responsive</span><span>UI</span></div>
+          <article class="project-card resource-card">
+            <div class="project-number">03 / PRACTICE</div>
+            <h3>Go beyond the basics</h3>
+            <p>Explore semantic HTML, adaptable CSS layouts, and JavaScript interactions with visual examples.</p>
+            <div class="project-tags"><span>Advanced notes</span><span>Interactive demo</span></div>
+            <div class="resource-actions">
+              <a class="resource-link" href="educatio.html#advanced">Explore advanced lessons</a>
+              <a class="resource-link secondary-resource-link" href="educatio.html#javascript">Try the JavaScript demo</a>
+            </div>
           </article>
         </div>
         <div class="impact-row">
-          <div><strong>06</strong><span>Core skills</span></div>
-          <div><strong>03</strong><span>Learning tracks</span></div>
-          <div><strong>24/7</strong><span>AI guidance</span></div>
+          <div><strong>03</strong><span>Core technologies</span></div>
+          <div><strong>02</strong><span>Learning levels</span></div>
+          <div><strong>05</strong><span>Video lessons</span></div>
         </div>
       </section>
 
@@ -119,6 +152,15 @@
           <div class="skill-item">UI/UX Design</div>
           <div class="skill-item">Web Development</div>
         </div>
+        <aside class="skill-notes" aria-labelledby="skill-notes-title">
+          <h3 id="skill-notes-title">Important notes</h3>
+          <ul>
+            <li><strong>Learn in layers:</strong> HTML structures a page, CSS styles it, and JavaScript adds behavior.</li>
+            <li><strong>Build while learning:</strong> Small projects help turn syntax into practical skill.</li>
+            <li><strong>Test real use:</strong> Check keyboard access, readability, and small-screen layouts.</li>
+            <li><strong>Debug with care:</strong> Read the browser console and test one change at a time.</li>
+          </ul>
+        </aside>
       </section>
 
     </main>

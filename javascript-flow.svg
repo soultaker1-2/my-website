@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">How JavaScript adds interaction</title>
+  <desc id="desc">A click event runs a handler and updates the page.</desc>
+  <rect width="960" height="360" rx="24" fill="#17171a"/>
+  <text x="48" y="54" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">JAVASCRIPT / BEHAVIOR</text>
+  <text x="48" y="92" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700">An event can change what the page shows</text>
+  <rect x="48" y="132" width="220" height="92" rx="14" fill="#25313d" stroke="#6da8df" stroke-width="2"/>
+  <text x="78" y="164" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="16" font-weight="700">1 / EVENT</text>
+  <text x="78" y="198" fill="#ffffff" font-family="Arial, sans-serif" font-size="22">Button click</text>
+  <path d="M285 178 H355 M355 178 L339 166 M355 178 L339 190" fill="none" stroke="#e4a7a7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="370" y="132" width="220" height="92" rx="14" fill="#342024" stroke="#d66666" stroke-width="2"/>
+  <text x="400" y="164" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="16" font-weight="700">2 / HANDLER</text>
+  <text x="400" y="198" fill="#ffffff" font-family="Consolas, monospace" font-size="20">run function()</text>
+  <path d="M607 178 H677 M677 178 L661 166 M677 178 L661 190" fill="none" stroke="#e4a7a7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="692" y="132" width="220" height="92" rx="14" fill="#25313d" stroke="#6da8df" stroke-width="2"/>
+  <text x="722" y="164" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="16" font-weight="700">3 / UPDATE</text>
+  <text x="722" y="198" fill="#ffffff" font-family="Arial, sans-serif" font-size="22">Show new text</text>
+  <text x="48" y="286" fill="#cfcfd4" font-family="Consolas, monospace" font-size="18">button.addEventListener('click', updatePage);</text>
+  <text x="48" y="324" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="18">The event starts the handler; the handler changes the document.</text>
+</svg>

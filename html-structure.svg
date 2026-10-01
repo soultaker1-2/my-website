@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">HTML page structure</title>
+  <desc id="desc">A simple web page split into header, main content, and footer regions.</desc>
+  <rect width="960" height="360" rx="24" fill="#17171a"/>
+  <text x="48" y="54" fill="#e4a7a7" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">HTML / STRUCTURE</text>
+  <text x="48" y="92" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700">A page is built from meaningful regions</text>
+  <rect x="80" y="124" width="800" height="54" rx="10" fill="#25313d" stroke="#6da8df" stroke-width="2"/>
+  <text x="110" y="158" fill="#ffffff" font-family="Consolas, monospace" font-size="20">&lt;header&gt;  Site title and navigation</text>
+  <rect x="80" y="190" width="800" height="102" rx="10" fill="#342024" stroke="#d66666" stroke-width="2"/>
+  <text x="110" y="223" fill="#f1c0c0" font-family="Consolas, monospace" font-size="20">&lt;main&gt;</text>
+  <text x="148" y="258" fill="#ffffff" font-family="Consolas, monospace" font-size="18">&lt;h1&gt; Main lesson heading</text>
+  <text x="148" y="282" fill="#ffffff" font-family="Consolas, monospace" font-size="18">&lt;p&gt; Supporting explanation</text>
+  <rect x="80" y="304" width="800" height="42" rx="10" fill="#25313d" stroke="#6da8df" stroke-width="2"/>
+  <text x="110" y="332" fill="#ffffff" font-family="Consolas, monospace" font-size="18">&lt;footer&gt;  Contact and page details</text>
+</svg>

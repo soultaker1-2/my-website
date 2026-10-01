@@ -11,7 +11,7 @@
       <a href="portfolio.html" class="logo">
         <img src="logo.png" alt="My Company Logo" width="150" height="50" />
       </a>
-      <a href="#home" class="logo">
+      <a href="portfolio.html#home" class="logo">
         <span class="logo-soul">SOUL</span>
         <span class="logo-program">PROGRAM</span>
       </a>
@@ -19,29 +19,36 @@
         <a href="portfolio.html#home">Home</a>
         <a href="portfolio.html#about">About</a>
         <a href="portfolio.html#skill">Skills</a>
-        <a href="portfolio.html#videos">Videos</a>
-        <a href="portfolio.html#education">Education</a>
+        <a href="video.html">Videos</a>
+        <a href="educatio.html">Education</a>
         <a href="contact.html" class="active">Contact</a>
-          <a href="login.html">Login</a>
       </nav>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch theme">Light</button>
     </header>
-    <section class="contact" id="contact">
-      <h2>Get In <span>Touch</span></h2>
-      <p>
-        I would love to hear about your project. Send a message and I will get back to you soon.
-      </p>
-      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="25a4d168-2bd3-4b1b-a3e6-20d0f61e5b95"/>
-        <input type="text" id="Name" name="name" placeholder="Your Name" autocomplete="name" required />
-        <input type="email" id="Email" name="email" placeholder="Your Email" autocomplete="email" required />
-        <input type="text" id="subject" name="subject" placeholder="Subject" />
-        <textarea id="Message" name="message" placeholder="Your Message" rows="6" required></textarea>
-        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
-        <button type="submit">Send Message</button>
-      </form>
-      <p id="successMessage" role="status" aria-live="polite" hidden></p>
-    </section>
+    <main>
+      <section class="contact" id="contact">
+        <h2>Get In <span>Touch</span></h2>
+        <p>
+          I would love to hear about your project. Send a message and I will get back to you soon.
+        </p>
+        <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="25a4d168-2bd3-4b1b-a3e6-20d0f61e5b95"/>
+          <input type="text" id="Name" name="name" placeholder="Your Name" autocomplete="name" required />
+          <input type="email" id="Email" name="email" placeholder="Your Email" autocomplete="email" required />
+          <input type="text" id="subject" name="subject" placeholder="Subject" />
+          <textarea id="Message" name="message" placeholder="Your Message" rows="6" required></textarea>
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+          <button type="submit">Send Message</button>
+        </form>
+        <p id="successMessage" role="status" aria-live="polite" hidden></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><strong>Soul Program</strong> • Let’s build something meaningful.</p>
+    </footer>
+
     <script src="jss.js?v=4"></script>
     <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
     <script>
