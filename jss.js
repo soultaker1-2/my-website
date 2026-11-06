@@ -179,20 +179,53 @@ const menuToggle = document.getElementById('menuToggle');
 const navigation = document.querySelector('nav');
 
 if (menuToggle && navigation) {
-    menuToggle.addEventListener('click', function () {
-        const isOpen = navigation.classList.toggle('open');
+    const navBackdrop = document.createElement('button');
+    navBackdrop.className = 'nav-backdrop';
+    navBackdrop.type = 'button';
+    navBackdrop.setAttribute('aria-label', 'Close navigation menu');
+    navBackdrop.hidden = true;
+    document.body.appendChild(navBackdrop);
+
+    const setMenuOpen = function (isOpen) {
+        navigation.classList.toggle('open', isOpen);
+        navBackdrop.hidden = !isOpen;
         menuToggle.setAttribute('aria-expanded', String(isOpen));
         menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
         menuToggle.textContent = isOpen ? '×' : '☰';
+        document.body.classList.toggle('navigation-open', isOpen);
+
+        if (isOpen) {
+            const firstLink = navigation.querySelector('a');
+            if (firstLink && window.matchMedia('(max-width: 1000px)').matches) firstLink.focus();
+        } else {
+            menuToggle.focus();
+        }
+    };
+
+    menuToggle.addEventListener('click', function () {
+        setMenuOpen(!navigation.classList.contains('open'));
+    });
+
+    navBackdrop.addEventListener('click', function () {
+        setMenuOpen(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && navigation.classList.contains('open')) {
+            setMenuOpen(false);
+        }
     });
 
     navigation.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
-            navigation.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            menuToggle.setAttribute('aria-label', 'Open navigation menu');
-            menuToggle.textContent = '☰';
+            if (navigation.classList.contains('open')) setMenuOpen(false);
         });
+    });
+
+    window.addEventListener('resize', function () {
+        if (!window.matchMedia('(max-width: 1000px)').matches && navigation.classList.contains('open')) {
+            setMenuOpen(false);
+        }
     });
 }
 

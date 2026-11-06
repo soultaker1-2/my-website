@@ -28,6 +28,10 @@ body {
   line-height: 1.7;
 }
 
+body.navigation-open {
+  overflow: hidden;
+}
+
 button,
 input,
 textarea {
@@ -126,6 +130,10 @@ header nav a.active {
   background: rgba(229, 107, 111, 0.13);
 }
 
+header nav a.active {
+  color: var(--accent-bright);
+}
+
 .theme-toggle,
 .menu-toggle {
   min-height: 4rem;
@@ -145,6 +153,20 @@ header nav a.active {
 }
 
 .menu-toggle {
+  display: none;
+}
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  border: 0;
+  background: rgba(3, 5, 9, 0.68);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+}
+
+.nav-backdrop[hidden] {
   display: none;
 }
 
@@ -325,6 +347,24 @@ section.home {
   margin-top: clamp(3rem, 6vw, 5rem);
 }
 
+.case-study-card,
+.project-card,
+.video-card,
+.advanced-topic {
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.case-study-card:hover,
+.advanced-topic:hover {
+  border-color: rgba(229, 107, 111, 0.55);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.22);
+  transform: translateY(-0.3rem);
+}
+
 .case-study-heading h3 {
   margin: 0.3rem 0 0.7rem;
   color: var(--text);
@@ -463,6 +503,10 @@ section.home {
   border-radius: 1rem;
   background: var(--surface);
   color: var(--text);
+}
+
+.video-search::placeholder {
+  color: var(--muted);
 }
 
 .video-filters {
@@ -850,6 +894,11 @@ main.account-page > .login-panel {
   color: var(--text);
 }
 
+.site-footer p {
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
 .learning-progress {
   margin: 2.4rem 0;
   padding: 1.6rem 2rem;
@@ -1027,16 +1076,22 @@ body.light-theme .lesson-code {
     box-shadow: 2rem 0 5rem rgba(0, 0, 0, 0.35);
     transform: translateX(-105%);
     transition: transform 220ms ease;
+    visibility: hidden;
   }
 
   header nav.open {
     transform: translateX(0);
+    visibility: visible;
   }
 
   header nav a {
     padding: 1.2rem;
     font-size: 1.6rem;
     text-align: left;
+  }
+
+  header nav a.active {
+    border-left: 3px solid var(--accent);
   }
 
   main {
@@ -1101,6 +1156,30 @@ body.light-theme .lesson-code {
     gap: 2.4rem;
     padding-top: 3rem;
     padding-bottom: 3rem;
+  }
+
+  .home-content {
+    text-align: center;
+  }
+
+  .home-content h1 {
+    font-size: clamp(3.4rem, 11vw, 5rem);
+  }
+
+  .home-content h3 {
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+  }
+
+  .section-heading {
+    text-align: left;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2.8rem, 8vw, 3.8rem);
+  }
+
+  .learning-progress-heading {
+    font-size: 1.35rem;
   }
 
   .home-img img {
