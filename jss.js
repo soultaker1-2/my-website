@@ -73,6 +73,16 @@ document.querySelectorAll('[data-quiz]').forEach(function (quiz) {
         if (selectedAnswer.value === quiz.dataset.answer) {
             feedback.textContent = quiz.dataset.correctMessage;
             feedback.classList.add('is-correct');
+            if (quiz.dataset.lessonId) {
+                const completedLessons = (localStorage.getItem('soul-completed-lessons') || '')
+                    .split(',')
+                    .filter(Boolean);
+                if (!completedLessons.includes(quiz.dataset.lessonId)) {
+                    completedLessons.push(quiz.dataset.lessonId);
+                    localStorage.setItem('soul-completed-lessons', completedLessons.join(','));
+                }
+                updateLearningProgress();
+            }
             return;
         }
 
@@ -80,6 +90,61 @@ document.querySelectorAll('[data-quiz]').forEach(function (quiz) {
         feedback.classList.add('is-incorrect');
     });
 });
+
+function updateLearningProgress() {
+    const lessonIds = ['html', 'css', 'javascript'];
+    const completedLessons = new Set(
+        (localStorage.getItem('soul-completed-lessons') || '')
+            .split(',')
+            .filter(function (lessonId) {
+                return lessonIds.includes(lessonId);
+            })
+    );
+
+    document.querySelectorAll('[data-learning-progress]').forEach(function (progress) {
+        const meter = progress.querySelector('[data-progress-meter]');
+        const label = progress.querySelector('[data-progress-label]');
+        if (!meter || !label) return;
+
+        meter.value = completedLessons.size;
+        label.textContent = completedLessons.size + ' of ' + lessonIds.length + ' lessons complete';
+    });
+}
+
+updateLearningProgress();
+
+const videoSearch = document.getElementById('videoSearch');
+const videoCards = Array.from(document.querySelectorAll('.video-card[data-video-category]'));
+const videoFilterButtons = Array.from(document.querySelectorAll('[data-video-filter]'));
+const videoEmptyState = document.getElementById('videoEmptyState');
+let activeVideoFilter = 'all';
+
+if (videoSearch && videoCards.length) {
+    const filterVideos = function () {
+        const query = videoSearch.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        videoCards.forEach(function (card) {
+            const matchesTopic = activeVideoFilter === 'all' || card.dataset.videoCategory === activeVideoFilter;
+            const matchesSearch = !query || card.textContent.toLowerCase().includes(query);
+            card.hidden = !matchesTopic || !matchesSearch;
+            if (!card.hidden) visibleCount += 1;
+        });
+
+        if (videoEmptyState) videoEmptyState.hidden = visibleCount > 0;
+    };
+
+    videoSearch.addEventListener('input', filterVideos);
+    videoFilterButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            activeVideoFilter = button.dataset.videoFilter;
+            videoFilterButtons.forEach(function (filterButton) {
+                filterButton.setAttribute('aria-pressed', String(filterButton === button));
+            });
+            filterVideos();
+        });
+    });
+}
 
 const runPlayground = document.getElementById('runPlayground');
 const playgroundFrame = document.getElementById('playgroundFrame');
@@ -139,6 +204,48 @@ if (themeToggle) {
         themeToggle.setAttribute('aria-label', 'Switch to dark theme');
     }
 
+    const readingProgress = document.createElement('div');
+    readingProgress.className = 'reading-progress';
+    readingProgress.setAttribute('role', 'progressbar');
+    readingProgress.setAttribute('aria-label', 'Page reading progress');
+    readingProgress.setAttribute('aria-valuemin', '0');
+    readingProgress.setAttribute('aria-valuemax', '100');
+    const readingProgressFill = document.createElement('span');
+    readingProgress.appendChild(readingProgressFill);
+    document.body.appendChild(readingProgress);
+
+    const backToTop = document.createElement('button');
+    backToTop.className = 'back-to-top';
+    backToTop.type = 'button';
+    backToTop.setAttribute('aria-label', 'Back to top');
+    backToTop.title = 'Back to top';
+    backToTop.textContent = '↑';
+    document.body.appendChild(backToTop);
+
+    let scrollUpdatePending = false;
+    const updateScrollControls = function () {
+        if (scrollUpdatePending) return;
+        scrollUpdatePending = true;
+        window.requestAnimationFrame(function () {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollableHeight > 0
+                ? Math.min(100, Math.round((window.scrollY / scrollableHeight) * 100))
+                : 0;
+            readingProgressFill.style.width = progress + '%';
+            readingProgress.setAttribute('aria-valuenow', String(progress));
+            backToTop.classList.toggle('is-visible', window.scrollY > 500);
+            scrollUpdatePending = false;
+        });
+    };
+
+    window.addEventListener('scroll', updateScrollControls, { passive: true });
+    window.addEventListener('resize', updateScrollControls);
+    updateScrollControls();
+
+    backToTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     themeToggle.addEventListener('click', function () {
         const lightTheme = document.body.classList.toggle('light-theme');
         localStorage.setItem('soul-theme', lightTheme ? 'light' : 'dark');
@@ -164,4 +271,3 @@ if ('IntersectionObserver' in window) {
         revealObserver.observe(item);
     });
 }
-

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Education | Soul Program</title>
     <link rel="stylesheet" href="style1.css?v=4" />
+    <link rel="stylesheet" href="style-modern.css?v=1" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -41,6 +42,13 @@
             <a href="#html">Simple lessons</a>
             <a href="#advanced">Advanced concepts</a>
           </nav>
+          <div class="learning-progress" data-learning-progress>
+            <div class="learning-progress-heading">
+              <span>Core lesson progress</span>
+              <span data-progress-label>0 of 3 lessons complete</span>
+            </div>
+            <progress max="3" value="0" data-progress-meter aria-label="Core lesson completion">0 of 3</progress>
+          </div>
           <p class="level-label">01 / Foundations</p>
           <h1 class="page-title" id="html"><span class="highlight">HTML</span> - What is HTML?</h1>
           <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard language used to create and design pages on the World Wide Web. Think of it as the <strong>skeleton</strong> or structural blueprint of a website. It tells the web browser how to display text, images, links, and other media.</p>
@@ -111,7 +119,7 @@
             <li><strong>High Compatibility:</strong> Every web browser natively supports HTML, meaning your creations can be viewed by anyone with an internet connection.</li>
           </ol>
 
-          <div class="lesson-check" data-quiz data-answer="main" data-hint="Hint: this element contains the page's central content." data-correct-message="Correct. The main element identifies the page's central content.">
+          <div class="lesson-check" data-quiz data-lesson-id="html" data-answer="main" data-hint="Hint: this element contains the page's central content." data-correct-message="Correct. The main element identifies the page's central content.">
             <h3>Quick check: HTML</h3>
             <fieldset>
               <legend>Which element holds the page's main content?</legend>
@@ -184,7 +192,7 @@
             <li><code>padding</code>: Adds space <em>inside</em> the border of an element.</li>
           </ul>
 
-          <div class="lesson-check" data-quiz data-answer="color" data-hint="Hint: this property changes the foreground of text." data-correct-message="Correct. The color property sets an element's text color.">
+          <div class="lesson-check" data-quiz data-lesson-id="css" data-answer="color" data-hint="Hint: this property changes the foreground of text." data-correct-message="Correct. The color property sets an element's text color.">
             <h3>Quick check: CSS</h3>
             <fieldset>
               <legend>Which property changes the color of text?</legend>
@@ -244,7 +252,7 @@
             <li><strong>Massive Community:</strong> It is consistently ranked as one of the most popular programming languages in the world.</li>
           </ol>
 
-          <div class="lesson-check" data-quiz data-answer="handler" data-hint="Hint: it is the function that runs in response to an event." data-correct-message="Correct. An event handler runs code in response to an event such as a click.">
+          <div class="lesson-check" data-quiz data-lesson-id="javascript" data-answer="handler" data-hint="Hint: it is the function that runs in response to an event." data-correct-message="Correct. An event handler runs code in response to an event such as a click.">
             <h3>Quick check: JavaScript</h3>
             <fieldset>
               <legend>What runs code in response to a click event?</legend>
