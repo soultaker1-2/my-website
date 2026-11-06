@@ -321,6 +321,92 @@ section.home {
   color: #ffc0c1;
 }
 
+.case-study-heading {
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.case-study-heading h3 {
+  margin: 0.3rem 0 0.7rem;
+  color: var(--text);
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+}
+
+.case-study-heading > p:last-child {
+  color: var(--muted);
+  font-size: 1.55rem;
+}
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.case-study-card {
+  min-width: 0;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  background: linear-gradient(150deg, var(--surface-raised), var(--surface));
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.14);
+}
+
+.case-study-type {
+  margin: 0 0 0.8rem;
+  color: var(--accent-bright);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.case-study-card h3 {
+  margin: 0 0 0.8rem;
+  color: var(--text);
+  font-size: 2rem;
+  line-height: 1.35;
+}
+
+.case-study-summary {
+  color: var(--muted);
+  font-size: 1.45rem;
+}
+
+.case-study-card details {
+  margin-top: 1.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.case-study-card summary {
+  padding: 1.2rem 0;
+  color: var(--accent-bright);
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.case-study-card summary:focus-visible {
+  outline-offset: 2px;
+}
+
+.case-study-details p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 1.35rem;
+  line-height: 1.7;
+}
+
+.case-study-details strong {
+  color: var(--text);
+}
+
+.case-study-card > .resource-link {
+  margin-top: auto;
+  padding-top: 1.6rem;
+}
+
 .resource-link,
 .lesson-step-nav a {
   color: var(--accent-bright);
@@ -568,6 +654,190 @@ section.home {
   color: #858e9d;
 }
 
+.account-page {
+  min-height: calc(100vh - var(--header-height) - 8rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main.account-page > .login-panel {
+  width: min(100%, 94rem);
+  min-height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+  background: var(--surface);
+}
+
+.account-intro,
+.account-note {
+  padding: clamp(2.4rem, 5vw, 5rem);
+}
+
+.account-intro h1 {
+  margin: 0 0 1rem;
+  color: var(--text);
+  font-size: clamp(3rem, 5vw, 4.8rem);
+  line-height: 1.15;
+}
+
+.account-intro > p:not(.eyebrow):not(.account-message) {
+  color: var(--muted);
+  font-size: 1.55rem;
+}
+
+.account-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 2rem 0;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 1.2rem;
+  background: var(--page);
+}
+
+.account-tab,
+.account-text-button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.account-tab {
+  min-height: 4.2rem;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.account-tab.is-active {
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+.account-form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.account-form[hidden],
+.account-tabs [hidden],
+.signed-in-panel[hidden],
+.account-page [hidden] {
+  display: none;
+}
+
+.account-form label {
+  margin-top: 0.8rem;
+  color: var(--text);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.account-form input {
+  width: 100%;
+  min-height: 4.8rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--page);
+  color: var(--text);
+  font-size: 1.6rem;
+}
+
+.account-submit {
+  min-height: 4.8rem;
+  margin-top: 1rem;
+  padding: 1rem 1.4rem;
+  border: 0;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #a63e48, #df6269);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.account-submit:disabled,
+.account-text-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.account-text-button {
+  margin-top: 1.4rem;
+  padding: 0;
+  color: var(--accent-bright);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.account-message {
+  min-height: 2.4rem;
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+  font-size: 1.4rem;
+}
+
+.account-message.is-error {
+  color: #ff9292;
+}
+
+.account-message.is-success {
+  color: #9fe0ad;
+}
+
+.signed-in-panel {
+  margin-top: 2rem;
+}
+
+.signed-in-panel p {
+  color: var(--muted);
+  font-size: 1.5rem;
+  overflow-wrap: anywhere;
+}
+
+.signed-in-panel strong {
+  color: var(--text);
+}
+
+.account-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(229, 107, 111, 0.23), transparent 48%),
+    var(--surface-raised);
+}
+
+.account-note h2 {
+  margin: 0 0 1rem;
+  color: var(--text);
+  font-size: clamp(2.6rem, 4vw, 4rem);
+  line-height: 1.2;
+}
+
+.account-note > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 1.55rem;
+}
+
+.account-note .account-scope-note {
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.3rem;
+}
+
 .site-footer {
   width: min(100%, var(--content-width));
   margin: 0 auto;
@@ -780,6 +1050,18 @@ body.light-theme .lesson-code {
   .video-toolbar {
     grid-template-columns: 1fr;
   }
+
+  .case-study-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  main.account-page > .login-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .account-note {
+    display: none;
+  }
 }
 
 @media (max-width: 700px) {
@@ -835,6 +1117,14 @@ body.light-theme .lesson-code {
   .project-card {
     min-height: auto;
     padding: 2rem;
+  }
+
+  .case-study-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-study-card {
+    padding: 1.8rem;
   }
 
   .impact-row {
