@@ -92,3 +92,16 @@ Offline support needs the website to be served through HTTPS (GitHub Pages provi
 4. After changing a file, save it and refresh the browser. If a browser keeps an old CSS or JavaScript file, increment the matching `?v=` number in the HTML.
 
 There are no dependencies to install or build commands to run.
+
+## Security notes
+
+The site is static: it has no server-side login, database, or private credentials. This reduces the amount of application attack surface, but no website can be guaranteed impossible to hack. Protect the GitHub account and repository that publish the site as carefully as the site itself.
+
+- The main pages set a baseline Content Security Policy that blocks plugin/object content, prevents injected `<base>` URLs, limits form destinations to this site and Web3Forms, and upgrades insecure resource requests. They also use a strict cross-origin referrer policy.
+- The standalone game has a stricter policy that permits its scripts, styles, and connections only from this site. Its policy is intentionally separate because the main pages load trusted third-party services.
+- Links that open WhatsApp or LinkedIn in a new tab use `rel="noopener noreferrer"` so the opened site cannot control the original tab.
+- The education playground intentionally runs visitor-written code in a sandboxed iframe. Do not remove its `sandbox` attribute or add `allow-same-origin`.
+- GitHub Pages does not let this project configure every HTTP response header. The HTML policies are useful safeguards, but they cannot replace server headers such as HSTS or `X-Frame-Options`, and they cannot protect a compromised GitHub account, a compromised third-party service, or a change deliberately published to the repository.
+- Keep GitHub two-factor authentication enabled, do not add passwords or private API keys to this public repository, review changes before publishing, and only include third-party scripts that the site needs. The Web3Forms access key in the contact page is a public form identifier, not a private server key.
+
+To confirm which version is live, check the GitHub Pages deployment in the repository's **Actions** tab after pushing changes.
