@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Learn HTML, CSS, and JavaScript with lessons, quizzes, and an interactive coding playground." />
     <title>Education | Soul Program</title>
-    <link rel="stylesheet" href="style1.css?v=4" />
-    <link rel="stylesheet" href="style-modern.css?v=3" />
+    <link rel="stylesheet" href="assets/css/style1.css?v=4" />
+    <link rel="stylesheet" href="assets/css/style-modern.css?v=3" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -17,7 +17,7 @@
   <body>
     <header>
       <a href="portfolio.html" class="logo">
-        <img src="logo.png" alt="Soul Program Logo" width="150" height="50" />
+        <img src="assets/images/logo.png" alt="Soul Program Logo" width="150" height="50" />
         <span class="logo-soul">SOUL</span>
         <span class="logo-program">PROGRAM</span>
       </a>
@@ -27,8 +27,8 @@
         <a href="portfolio.html#skill">Skills</a>
         <a href="video.html">Videos</a>
         <a href="educatio.html" class="active">Education</a>
+        <a href="game.html">Play offline</a>
         <a href="contact.html">Contact</a>
-        <a href="login.html">Login</a>
       </nav>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch theme">Light</button>
@@ -37,7 +37,7 @@
     <main>
       <section class="home education-page" id="home">
         <div class="home-img">
-          <img src="edu.jpg" alt="Education" />
+          <img src="assets/images/edu.jpg" alt="Education" />
         </div>
         <div class="home-content">
           <nav class="lesson-nav" aria-label="Choose a learning level">
@@ -55,7 +55,7 @@
           <h1 class="page-title" id="html"><span class="highlight">HTML</span> - What is HTML?</h1>
           <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard language used to create and design pages on the World Wide Web. Think of it as the <strong>skeleton</strong> or structural blueprint of a website. It tells the web browser how to display text, images, links, and other media.</p>
           <figure class="lesson-image">
-            <img src="html-structure.svg" alt="Diagram of a page divided into header, main content, and footer using HTML elements." />
+            <img src="assets/images/diagrams/html-structure.svg" alt="Diagram of a page divided into header, main content, and footer using HTML elements." />
             <figcaption>HTML gives each part of a page a clear structure and meaning.</figcaption>
           </figure>
 
@@ -142,7 +142,7 @@
           <p><strong>CSS</strong> stands for <strong>Cascading Style Sheets</strong>. If HTML is the skeleton that builds the structure of a website, CSS is the <strong>clothing, makeup, and styling</strong> that makes it look good.</p>
           <p>Without CSS, every website would look like a plain text document with black Times New Roman text, blue links, and white backgrounds. CSS allows you to control the colors, fonts, layouts, and overall visual presentation of your web pages.</p>
           <figure class="lesson-image">
-            <img src="css-rule.svg" alt="Diagram showing the h1 selector, color property, and red value producing a styled heading." />
+            <img src="assets/images/diagrams/css-rule.svg" alt="Diagram showing the h1 selector, color property, and red value producing a styled heading." />
             <figcaption>A CSS rule selects an element, then applies property values to change its appearance.</figcaption>
           </figure>
 
@@ -216,7 +216,7 @@
           <p><strong>JavaScript</strong> (often abbreviated as <strong>JS</strong>) is a powerful, lightweight programming language used to make web pages <strong>interactive</strong>.</p>
           <p>If HTML is the skeleton that structures a website, and CSS is the clothing that styles it, JavaScript is the <strong>brain and muscles</strong>. It allows web pages to respond to user actions, think logically, and dynamically update content.</p>
           <figure class="lesson-image">
-            <img src="javascript-flow.svg" alt="Diagram of a button click triggering a JavaScript handler that updates page text." />
+            <img src="assets/images/diagrams/javascript-flow.svg" alt="Diagram of a button click triggering a JavaScript handler that updates page text." />
             <figcaption>JavaScript connects user events to changes in the page.</figcaption>
           </figure>
 
@@ -444,7 +444,7 @@ h1 { color: #b74b4b; }</textarea>
         </div>
       </section>
     </main>
-    <script src="jss.js?v=5"></script>
+    <script src="assets/js/jss.js?v=5"></script>
     <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
     <script>
       window.botpress.init({

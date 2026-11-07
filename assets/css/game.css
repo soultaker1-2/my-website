@@ -1,0 +1,352 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --page: #090b10;
+  --surface: #11151d;
+  --line: rgba(255, 255, 255, 0.1);
+  --text: #f3f5f8;
+  --muted: #aab3c1;
+  --accent: #ff858b;
+  --accent-dark: #bd4d55;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(119, 43, 62, 0.24), transparent 44%),
+    radial-gradient(ellipse at 0 90%, rgba(36, 67, 117, 0.16), transparent 38%),
+    var(--page);
+  color: var(--text);
+}
+
+button,
+a {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #ffc0c1;
+  outline-offset: 3px;
+}
+
+.game-header {
+  width: min(1120px, calc(100% - 40px));
+  min-height: 82px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand,
+.back-link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.brand strong {
+  color: var(--accent);
+}
+
+.brand-mark {
+  color: var(--accent);
+  font-size: 27px;
+}
+
+.back-link {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+main {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: clamp(36px, 7vh, 68px) 0 30px;
+}
+
+.game-shell {
+  overflow: hidden;
+  padding: clamp(20px, 4vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(22, 27, 38, 0.96), rgba(13, 16, 23, 0.96));
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.38);
+}
+
+.game-intro {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(38px, 8vw, 62px);
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+}
+
+h1 span {
+  color: var(--accent);
+}
+
+.game-intro > p:last-child {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 26px 0 16px;
+}
+
+.score-card {
+  min-width: 108px;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.035);
+  text-align: center;
+}
+
+.score-label {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.score-card strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 23px;
+  font-variant-numeric: tabular-nums;
+}
+
+.playfield-wrap {
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 19px;
+  background: #080b12;
+  aspect-ratio: 800 / 440;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(5, 7, 12, 0.45);
+  backdrop-filter: blur(5px);
+}
+
+.game-overlay[hidden] {
+  display: none;
+}
+
+.overlay-card {
+  width: min(380px, 100%);
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 20px;
+  background: rgba(15, 19, 28, 0.94);
+  text-align: center;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.3);
+}
+
+.overlay-icon {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--accent);
+  font-size: 28px;
+}
+
+.overlay-card h2 {
+  margin: 0;
+  font-size: clamp(20px, 4vw, 27px);
+}
+
+.overlay-card p {
+  margin: 9px 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.primary-button,
+.pause-button,
+.move-button {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.primary-button {
+  padding: 0 20px;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent-dark), #e46b72);
+  font-weight: 800;
+  box-shadow: 0 8px 24px rgba(189, 77, 85, 0.22);
+}
+
+.primary-button:hover:not(:disabled) {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.game-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.move-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.move-controls > span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.move-button {
+  width: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 20px;
+}
+
+.move-button:hover:not(:disabled),
+.pause-button:hover:not(:disabled) {
+  border-color: rgba(255, 133, 139, 0.55);
+  background: rgba(255, 133, 139, 0.12);
+}
+
+.pause-button {
+  padding: 0 16px;
+  background: transparent;
+}
+
+.pause-button:disabled,
+.move-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.game-hint,
+.storage-notice {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.storage-notice {
+  color: #ffd18a;
+}
+
+footer {
+  padding: 22px 0 0;
+  color: #7f8998;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 540px) {
+  .game-header {
+    width: calc(100% - 28px);
+    min-height: 68px;
+  }
+
+  .brand {
+    font-size: 12px;
+  }
+
+  .back-link {
+    font-size: 12px;
+  }
+
+  main {
+    width: calc(100% - 20px);
+    padding-top: 28px;
+  }
+
+  .game-shell {
+    padding: 20px 14px;
+    border-radius: 20px;
+  }
+
+  .playfield-wrap {
+    min-height: 220px;
+  }
+
+  .overlay-card {
+    padding: 17px;
+  }
+
+  .overlay-card p {
+    margin: 6px 0 12px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

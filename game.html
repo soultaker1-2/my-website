@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090b10" />
+    <meta name="description" content="Play Star Dodge, a free offline-ready arcade game from Soul Program." />
+    <title>Star Dodge | Soul Program</title>
+    <link rel="stylesheet" href="assets/css/game.css" />
+    <script src="assets/js/game.js" defer></script>
+  </head>
+  <body>
+    <header class="game-header">
+      <a class="brand" href="portfolio.html" aria-label="Soul Program home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>SOUL <strong>PROGRAM</strong></span>
+      </a>
+      <a class="back-link" href="portfolio.html">Back to the site <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="game-shell" aria-labelledby="gameTitle">
+        <div class="game-intro">
+          <p class="eyebrow">THE OFFLINE ARCADE</p>
+          <h1 id="gameTitle">Star <span>Dodge</span></h1>
+          <p>Keep moving. Dodge the meteor shower. How long can you last?</p>
+        </div>
+
+        <div class="scoreboard" aria-label="Game scores">
+          <div class="score-card">
+            <span class="score-label">SCORE</span>
+            <strong id="scoreValue" aria-live="polite">0</strong>
+          </div>
+          <div class="score-card">
+            <span class="score-label">BEST</span>
+            <strong id="bestValue">0</strong>
+          </div>
+        </div>
+
+        <div class="playfield-wrap">
+          <canvas id="gameCanvas" aria-label="Star Dodge game. Move between three lanes to avoid meteors.">
+            Your browser does not support canvas. Use a recent browser to play Star Dodge.
+          </canvas>
+          <div class="game-overlay" id="gameOverlay">
+            <div class="overlay-card">
+              <span class="overlay-icon" id="overlayIcon" aria-hidden="true">✦</span>
+              <h2 id="overlayTitle">Ready, space traveler?</h2>
+              <p id="overlayMessage">Dodge meteors with the arrow keys or the buttons below.</p>
+              <button class="primary-button" id="startButton" type="button">Start game <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-controls">
+          <div class="move-controls" aria-label="Movement controls">
+            <button class="move-button" id="leftButton" type="button" aria-label="Move left">←</button>
+            <span>MOVE</span>
+            <button class="move-button" id="rightButton" type="button" aria-label="Move right">→</button>
+          </div>
+          <button class="pause-button" id="pauseButton" type="button" aria-pressed="false" disabled>Pause</button>
+        </div>
+        <p class="game-hint" id="gameHint">Use ← → or A / D to steer. Press P to pause.</p>
+        <p class="storage-notice" id="storageNotice" role="status" hidden></p>
+      </section>
+      <footer>Made for quick breaks — and fully playable offline after your first visit.</footer>
+    </main>
+  </body>
+</html>

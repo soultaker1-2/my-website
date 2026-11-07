@@ -304,3 +304,9 @@ if ('IntersectionObserver' in window) {
         revealObserver.observe(item);
     });
 }
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js').catch(function (error) {
+        console.error('Offline site caching could not be enabled.', error);
+    });
+}
