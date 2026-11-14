@@ -93,6 +93,18 @@ Offline support needs the website to be served through HTTPS (GitHub Pages provi
 
 There are no dependencies to install or build commands to run.
 
+## Help Google find the website
+
+The site includes `sitemap.xml` with its public pages and `robots.txt` to let search crawlers access them. After publishing changes to GitHub Pages:
+
+1. Open [Google Search Console](https://search.google.com/search-console/) and sign in.
+2. Add the URL-prefix property `https://soultaker1-2.github.io/my-website/`.
+3. Complete Google's ownership verification steps.
+4. In **Sitemaps**, submit `sitemap.xml`.
+5. Use **URL inspection** to request indexing of the homepage.
+
+Indexing is controlled by Google and can take time; submitting a sitemap does not guarantee that every page will appear in search results.
+
 ## Security notes
 
 The site is static: it has no server-side login, database, or private credentials. This reduces the amount of application attack surface, but no website can be guaranteed impossible to hack. Protect the GitHub account and repository that publish the site as carefully as the site itself.

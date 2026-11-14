@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://soultaker1-2.github.io/my-website/sitemap.xml
