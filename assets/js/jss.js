@@ -116,55 +116,238 @@ updateLearningProgress();
 const codeQuest = document.querySelector('[data-code-quest]');
 
 if (codeQuest) {
+    const questQuestions = {
+        html: [
+            {
+                prompt: 'Which element represents the main content of a page?',
+                legend: 'Choose the semantic page element',
+                choices: [['section', '<section>'], ['main', '<main>'], ['footer', '<footer>']],
+                answer: 'main'
+            },
+            {
+                prompt: 'Which heading element should usually be the page’s main title?',
+                legend: 'Choose the top-level heading',
+                choices: [['h6', '<h6>'], ['h1', '<h1>'], ['head', '<head>']],
+                answer: 'h1'
+            },
+            {
+                prompt: 'Which attribute supplies alternative text for an image?',
+                legend: 'Choose the image attribute',
+                choices: [['src', 'src'], ['href', 'href'], ['alt', 'alt']],
+                answer: 'alt'
+            },
+            {
+                prompt: 'Which element creates a link to another page?',
+                legend: 'Choose the link element',
+                choices: [['a', '<a>'], ['link', '<link>'], ['p', '<p>']],
+                answer: 'a'
+            },
+            {
+                prompt: 'Which element is best for a group of navigation links?',
+                legend: 'Choose the navigation landmark',
+                choices: [['nav', '<nav>'], ['aside', '<aside>'], ['strong', '<strong>']],
+                answer: 'nav'
+            }
+        ],
+        css: [
+            {
+                prompt: 'Which declaration changes an element’s text color to purple?',
+                legend: 'Choose the correct declaration',
+                choices: [['background', 'background: purple;'], ['font', 'font: purple;'], ['color', 'color: purple;']],
+                answer: 'color'
+            },
+            {
+                prompt: 'Which CSS property adds space inside an element’s border?',
+                legend: 'Choose the spacing property',
+                choices: [['margin', 'margin'], ['padding', 'padding'], ['gap', 'gap']],
+                answer: 'padding'
+            },
+            {
+                prompt: 'Which selector targets an element with id="banner"?',
+                legend: 'Choose the ID selector',
+                choices: [['.banner', '.banner'], ['#banner', '#banner'], ['banner', 'banner']],
+                answer: '#banner'
+            },
+            {
+                prompt: 'Which declaration turns an element into a flex container?',
+                legend: 'Choose the layout declaration',
+                choices: [['display: flex;', 'display: flex;'], ['position: flex;', 'position: flex;'], ['flex: display;', 'flex: display;']],
+                answer: 'display: flex;'
+            },
+            {
+                prompt: 'Which at-rule is commonly used to apply styles at a smaller screen width?',
+                legend: 'Choose the responsive CSS rule',
+                choices: [['@keyframes', '@keyframes'], ['@media', '@media'], ['@import', '@import']],
+                answer: '@media'
+            }
+        ],
+        javascript: [
+            {
+                prompt: 'Which line listens for a click on a button and runs startGame?',
+                legend: 'Choose the event listener',
+                choices: [['style', 'button.style.click = startGame;'], ['listener', "button.addEventListener('click', startGame);"], ['text', 'button.textContent = startGame;']],
+                answer: 'listener'
+            },
+            {
+                prompt: 'Which keyword declares a variable that can be reassigned?',
+                legend: 'Choose the variable keyword',
+                choices: [['const', 'const'], ['let', 'let'], ['static', 'static']],
+                answer: 'let'
+            },
+            {
+                prompt: 'What does document.querySelector(".card") return?',
+                legend: 'Choose the best answer',
+                choices: [['first', 'The first matching .card element'], ['all', 'Every .card element as an array'], ['new', 'A new card element']],
+                answer: 'first'
+            },
+            {
+                prompt: 'Which operator checks whether two values are equal without type conversion?',
+                legend: 'Choose the strict equality operator',
+                choices: [['=', '='], ['==', '=='], ['===', '===']],
+                answer: '==='
+            },
+            {
+                prompt: 'Which method converts a JSON string into a JavaScript value?',
+                legend: 'Choose the JSON method',
+                choices: [['stringify', 'stringify'], ['parse', 'parse'], ['convert', 'convert']],
+                answer: 'parse'
+            }
+        ]
+    };
     const questLevels = Array.from(codeQuest.querySelectorAll('[data-quest-level]'));
     const questProgress = codeQuest.querySelector('[data-quest-progress]');
     const questProgressLabel = codeQuest.querySelector('[data-quest-progress-label]');
     const questStorageNotice = codeQuest.querySelector('[data-quest-storage-notice]');
     const questFinale = codeQuest.querySelector('[data-quest-finale]');
-    const questStorageKey = 'soul-code-quest-badges';
+    const questStorageKey = 'soul-code-quest-progress-v2';
     const validLevelIds = questLevels.map(function (level) {
         return level.dataset.questLevel;
     });
-    let earnedBadges = [];
+    const questionCounts = validLevelIds.map(function (levelId) {
+        return questQuestions[levelId].length;
+    });
+    const totalQuestions = questionCounts.reduce(function (total, count) {
+        return total + count;
+    }, 0);
+    const completedByLevel = Object.create(null);
+    let storageAvailable = true;
+    validLevelIds.forEach(function (levelId) {
+        completedByLevel[levelId] = 0;
+    });
 
     try {
-        const savedBadges = JSON.parse(localStorage.getItem(questStorageKey) || '[]');
-        if (Array.isArray(savedBadges)) {
-            for (const levelId of validLevelIds) {
-                if (!savedBadges.includes(levelId)) break;
-                earnedBadges.push(levelId);
-            }
+        const savedProgress = JSON.parse(localStorage.getItem(questStorageKey) || '{}');
+        if (savedProgress && typeof savedProgress === 'object' && !Array.isArray(savedProgress)) {
+            let previousLevelsComplete = true;
+            validLevelIds.forEach(function (levelId, index) {
+                const savedCount = savedProgress[levelId];
+                const questionCount = questionCounts[index];
+                const validCount = Number.isInteger(savedCount) && savedCount >= 0
+                    ? Math.min(savedCount, questionCount)
+                    : 0;
+                completedByLevel[levelId] = previousLevelsComplete ? validCount : 0;
+                previousLevelsComplete = previousLevelsComplete && validCount === questionCount;
+            });
         }
     } catch (error) {
+        storageAvailable = false;
         questStorageNotice.textContent = 'Progress cannot be saved in this browser, but you can still play this visit.';
         questStorageNotice.hidden = false;
     }
 
+    const completedQuestionCount = function () {
+        return validLevelIds.reduce(function (total, levelId) {
+            return total + (completedByLevel[levelId] || 0);
+        }, 0);
+    };
+
+    const completedLevelCount = function () {
+        return validLevelIds.filter(function (levelId, index) {
+            return (completedByLevel[levelId] || 0) === questionCounts[index];
+        }).length;
+    };
+
+    const saveQuestProgress = function () {
+        if (!storageAvailable) return;
+        try {
+            localStorage.setItem(questStorageKey, JSON.stringify(completedByLevel));
+        } catch (error) {
+            storageAvailable = false;
+            questStorageNotice.textContent = 'Progress will last for this visit only because browser storage is unavailable.';
+            questStorageNotice.hidden = false;
+        }
+    };
+
+    const renderQuestion = function (level, question, levelIndex, questionIndex) {
+        const fieldset = level.querySelector('[data-quest-options]');
+        const legend = fieldset.querySelector('[data-quest-legend]');
+        const prompt = level.querySelector('[data-quest-prompt]');
+        const questionProgress = level.querySelector('[data-quest-level-progress]');
+        const feedback = level.querySelector('[data-quest-feedback]');
+        const checkButton = level.querySelector('[data-quest-check]');
+        const levelId = level.dataset.questLevel;
+        const isUnlocked = levelIndex === completedLevelCount();
+        const isComplete = (completedByLevel[levelId] || 0) >= questQuestions[levelId].length;
+
+        prompt.textContent = question.prompt;
+        legend.textContent = question.legend;
+        questionProgress.textContent = 'Question ' + (questionIndex + 1) + ' of ' + questQuestions[levelId].length;
+        fieldset.disabled = !isUnlocked || isComplete;
+        checkButton.disabled = !isUnlocked || isComplete;
+        fieldset.querySelectorAll('label').forEach(function (label) {
+            label.remove();
+        });
+
+        question.choices.forEach(function (choice, choiceIndex) {
+            const label = document.createElement('label');
+            const input = document.createElement('input');
+            const answerText = document.createElement('code');
+            input.type = 'radio';
+            input.name = 'quest-' + levelId + '-' + questionIndex;
+            input.value = choice[0];
+            input.id = input.name + '-' + choiceIndex;
+            answerText.textContent = choice[1];
+            label.htmlFor = input.id;
+            label.append(input, answerText);
+            fieldset.appendChild(label);
+        });
+
+        feedback.textContent = '';
+        feedback.classList.remove('is-incorrect');
+        checkButton.textContent = isComplete ? 'Level complete' : 'Check answer';
+    };
+
     const renderQuest = function () {
+        let badgesEarned = 0;
+
         questLevels.forEach(function (level, index) {
             const levelId = level.dataset.questLevel;
-            const isEarned = earnedBadges.includes(levelId);
-            const isUnlocked = index <= earnedBadges.length;
-            const options = level.querySelector('[data-quest-options]');
-            const checkButton = level.querySelector('[data-quest-check]');
+            const questions = questQuestions[levelId];
+            const questionIndex = Math.min(completedByLevel[levelId] || 0, questions.length - 1);
+            const isEarned = (completedByLevel[levelId] || 0) >= questions.length;
+            const isUnlocked = index <= badgesEarned;
             const badge = level.querySelector('[data-quest-badge]');
 
             level.classList.toggle('is-locked', !isUnlocked);
             level.classList.toggle('is-complete', isEarned);
-            options.disabled = !isUnlocked || isEarned;
-            checkButton.disabled = !isUnlocked || isEarned;
+            renderQuestion(level, questions[questionIndex], index, questionIndex);
+            level.querySelector('[data-quest-level-progress]').textContent = isEarned
+                ? questions.length + ' of ' + questions.length + ' questions complete'
+                : 'Question ' + ((completedByLevel[levelId] || 0) + 1) + ' of ' + questions.length;
             badge.hidden = !isEarned;
 
             if (isEarned) {
                 level.querySelector('[data-quest-feedback]').textContent = 'Badge earned! Level complete.';
+                badgesEarned += 1;
             }
         });
 
-        if (questProgress) questProgress.value = earnedBadges.length;
+        if (questProgress) questProgress.value = completedQuestionCount();
         if (questProgressLabel) {
-            questProgressLabel.textContent = earnedBadges.length + ' of ' + questLevels.length + ' badges earned';
+            questProgressLabel.textContent = completedQuestionCount() + ' of ' + totalQuestions + ' questions · ' +
+                badgesEarned + ' of ' + questLevels.length + ' badges';
         }
-        if (questFinale) questFinale.hidden = earnedBadges.length !== questLevels.length;
+        if (questFinale) questFinale.hidden = badgesEarned !== questLevels.length;
     };
 
     questLevels.forEach(function (level, index) {
@@ -173,7 +356,7 @@ if (codeQuest) {
         const feedback = level.querySelector('[data-quest-feedback]');
 
         checkButton.addEventListener('click', function () {
-            if (index !== earnedBadges.length) return;
+            if (index !== completedLevelCount()) return;
 
             const selectedAnswer = options.querySelector('input[type="radio"]:checked');
             if (!selectedAnswer) {
@@ -182,27 +365,25 @@ if (codeQuest) {
                 return;
             }
 
-            if (selectedAnswer.value !== options.dataset.answer) {
+            const questionIndex = completedByLevel[level.dataset.questLevel] || 0;
+            const question = questQuestions[level.dataset.questLevel][questionIndex];
+            if (selectedAnswer.value !== question.answer) {
                 feedback.textContent = 'Not quite — try another answer.';
                 feedback.classList.add('is-incorrect');
                 return;
             }
 
             feedback.classList.remove('is-incorrect');
-            earnedBadges.push(level.dataset.questLevel);
-
-            try {
-                localStorage.setItem(questStorageKey, JSON.stringify(earnedBadges));
-            } catch (error) {
-                questStorageNotice.textContent = 'Badge progress will last for this visit only because browser storage is unavailable.';
-                questStorageNotice.hidden = false;
-            }
+            completedByLevel[level.dataset.questLevel] += 1;
+            saveQuestProgress();
 
             renderQuest();
-            if (earnedBadges.length === questLevels.length) {
-                feedback.textContent = 'Correct! Final badge earned — quest complete!';
+            if (completedByLevel[level.dataset.questLevel] === questionCounts[index]) {
+                feedback.textContent = index === questLevels.length - 1
+                    ? 'Correct! Final badge earned — quest complete!'
+                    : 'Correct! Badge earned. The next level is unlocked.';
             } else {
-                feedback.textContent = 'Correct! Badge earned. The next level is unlocked.';
+                feedback.textContent = 'Correct! Next question unlocked.';
             }
         });
     });

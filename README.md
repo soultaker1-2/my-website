@@ -67,7 +67,7 @@ This script is included by the main site pages. It checks for the relevant page 
 - Updates the lesson progress meter from the saved completed lesson IDs.
 - Filters video cards using the search field and topic buttons.
 - Runs the education-page code playground by putting the visitor's HTML, CSS, and JavaScript into a sandboxed iframe.
-- Powers the Education page's three-level Code Quest and saves earned badges in `localStorage`.
+- Powers the Education page's 15-question, three-level Code Quest and saves question progress and earned badges in `localStorage`.
 - Opens and closes the mobile navigation menu and supports closing it with Escape.
 - Restores and changes the saved light/dark theme.
 - Adds the reading progress indicator, back-to-top button, and section reveal effects.

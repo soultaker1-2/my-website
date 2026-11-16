@@ -309,15 +309,15 @@ if score &gt;= 50:
 
           <section class="code-quest" id="code-quest" aria-labelledby="code-quest-title" data-code-quest>
             <div class="quest-header">
-              <p class="level-label">Interactive challenge / 3 levels</p>
+              <p class="level-label">Interactive challenge / 15 questions</p>
               <h2 id="code-quest-title">The <span>Code Quest</span></h2>
-              <p>Answer each challenge to unlock the next level. Earn a badge for every skill and collect all three.</p>
+              <p>Answer five questions in each level to unlock the next challenge. Earn all three skill badges to finish the quest.</p>
               <div class="quest-progress">
                 <div class="quest-progress-label">
                   <span>Your journey</span>
-                  <span data-quest-progress-label>0 of 3 badges earned</span>
+                  <span data-quest-progress-label>0 of 15 questions · 0 of 3 badges</span>
                 </div>
-                <progress max="3" value="0" data-quest-progress aria-label="Code Quest badge progress">0 of 3</progress>
+                <progress max="15" value="0" data-quest-progress aria-label="Code Quest question progress">0 of 15</progress>
               </div>
               <p class="quest-storage-notice" data-quest-storage-notice role="status" hidden></p>
             </div>
@@ -331,13 +331,11 @@ if score &gt;= 50:
                   </div>
                   <span class="quest-badge" data-quest-badge hidden aria-label="HTML Pathfinder badge earned">✦</span>
                 </div>
-                <p>Choose the element that represents the main content of a page.</p>
-                <fieldset class="quest-options" data-quest-options data-answer="main">
-                  <legend>Your first challenge</legend>
-                  <label><input type="radio" name="quest-html" value="section" /> <code>&lt;section&gt;</code></label>
-                  <label><input type="radio" name="quest-html" value="main" /> <code>&lt;main&gt;</code></label>
-                  <label><input type="radio" name="quest-html" value="footer" /> <code>&lt;footer&gt;</code></label>
+                <p data-quest-prompt></p>
+                <fieldset class="quest-options" data-quest-options>
+                  <legend data-quest-legend></legend>
                 </fieldset>
+                <p class="quest-question-progress" data-quest-level-progress></p>
                 <button class="quest-check-button" type="button" data-quest-check>Check answer</button>
                 <p class="quest-feedback" data-quest-feedback role="status" aria-live="polite"></p>
               </article>
@@ -350,13 +348,11 @@ if score &gt;= 50:
                   </div>
                   <span class="quest-badge" data-quest-badge hidden aria-label="CSS Spellcaster badge earned">✦</span>
                 </div>
-                <p>Pick the CSS declaration that changes an element's text color to purple.</p>
-                <fieldset class="quest-options" data-quest-options data-answer="color" disabled>
-                  <legend>Choose the correct declaration</legend>
-                  <label><input type="radio" name="quest-css" value="background" /> <code>background: purple;</code></label>
-                  <label><input type="radio" name="quest-css" value="font" /> <code>font: purple;</code></label>
-                  <label><input type="radio" name="quest-css" value="color" /> <code>color: purple;</code></label>
+                <p data-quest-prompt></p>
+                <fieldset class="quest-options" data-quest-options disabled>
+                  <legend data-quest-legend></legend>
                 </fieldset>
+                <p class="quest-question-progress" data-quest-level-progress></p>
                 <button class="quest-check-button" type="button" data-quest-check disabled>Check answer</button>
                 <p class="quest-feedback" data-quest-feedback role="status" aria-live="polite"></p>
               </article>
@@ -369,13 +365,11 @@ if score &gt;= 50:
                   </div>
                   <span class="quest-badge" data-quest-badge hidden aria-label="JavaScript Guardian badge earned">✦</span>
                 </div>
-                <p>Which line listens for a click on a button and runs <code>startGame</code>?</p>
-                <fieldset class="quest-options" data-quest-options data-answer="listener" disabled>
-                  <legend>Choose the event listener</legend>
-                  <label><input type="radio" name="quest-javascript" value="style" /> <code>button.style.click = startGame;</code></label>
-                  <label><input type="radio" name="quest-javascript" value="listener" /> <code>button.addEventListener('click', startGame);</code></label>
-                  <label><input type="radio" name="quest-javascript" value="text" /> <code>button.textContent = startGame;</code></label>
+                <p data-quest-prompt></p>
+                <fieldset class="quest-options" data-quest-options disabled>
+                  <legend data-quest-legend></legend>
                 </fieldset>
+                <p class="quest-question-progress" data-quest-level-progress></p>
                 <button class="quest-check-button" type="button" data-quest-check disabled>Check answer</button>
                 <p class="quest-feedback" data-quest-feedback role="status" aria-live="polite"></p>
               </article>
@@ -556,7 +550,7 @@ h1 { color: #b74b4b; }</textarea>
         </div>
       </section>
     </main>
-    <script src="assets/js/jss.js?v=6"></script>
+    <script src="assets/js/jss.js?v=7"></script>
     <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
     <script>
       window.botpress.init({
