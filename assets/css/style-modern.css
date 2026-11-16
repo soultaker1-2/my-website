@@ -581,6 +581,139 @@ section.home {
   color: var(--text);
 }
 
+.mini-projects {
+  margin: 3rem 0;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  background: linear-gradient(150deg, var(--surface-raised), var(--surface));
+}
+
+.mini-projects > h2 {
+  color: var(--text);
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
+}
+
+.mini-project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr));
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+
+.mini-project-card {
+  min-width: 0;
+  padding: 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: 1.3rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.mini-project-card h3 {
+  margin: 0 0 0.6rem;
+  color: var(--text);
+  font-size: 2rem;
+}
+
+.mini-project-card > p:not(.lesson-tag, .lesson-note, .tip-result) {
+  font-size: 1.45rem;
+}
+
+.mini-project-card label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  color: var(--text);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.mini-project-card input[type="number"],
+.mini-project-card select {
+  width: 100%;
+  min-height: 4.2rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.mini-project-card input[type="color"] {
+  width: 100%;
+  height: 4.4rem;
+  padding: 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.mini-project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.mini-project-button {
+  min-height: 4rem;
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: linear-gradient(135deg, #a63e48, #df6269);
+  color: #fff;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mini-project-button:hover {
+  background: linear-gradient(135deg, #bd4d55, #f0797e);
+}
+
+.secondary-project-button {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.counter-value {
+  display: block;
+  margin: 1.2rem 0;
+  color: var(--accent-bright);
+  font-size: 3.2rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.color-value {
+  display: block;
+  margin-top: 0.7rem;
+  color: var(--text);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 1.4rem;
+}
+
+.color-preview {
+  min-height: 5rem;
+  margin-top: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+}
+
+.tip-result {
+  min-height: 2.8rem;
+  margin: 1rem 0 0;
+  color: var(--accent-bright) !important;
+  font-weight: 700 !important;
+}
+
+.mini-project-card .lesson-note {
+  margin-bottom: 0;
+  font-size: 1.3rem;
+}
+
 .education-page hr {
   margin: 3rem 0;
   border: 0;

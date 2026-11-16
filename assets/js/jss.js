@@ -113,6 +113,72 @@ function updateLearningProgress() {
 
 updateLearningProgress();
 
+const projectCounterValue = document.getElementById('projectCounterValue');
+const decreaseCounter = document.getElementById('decreaseCounter');
+const increaseCounter = document.getElementById('increaseCounter');
+const resetCounter = document.getElementById('resetCounter');
+
+if (projectCounterValue && decreaseCounter && increaseCounter && resetCounter) {
+    let count = 0;
+    const renderCount = function () {
+        projectCounterValue.textContent = String(count);
+    };
+
+    decreaseCounter.addEventListener('click', function () {
+        count -= 1;
+        renderCount();
+    });
+    increaseCounter.addEventListener('click', function () {
+        count += 1;
+        renderCount();
+    });
+    resetCounter.addEventListener('click', function () {
+        count = 0;
+        renderCount();
+    });
+}
+
+const projectColorInput = document.getElementById('projectColorInput');
+const projectColorValue = document.getElementById('projectColorValue');
+const projectColorPreview = document.getElementById('projectColorPreview');
+
+if (projectColorInput && projectColorValue && projectColorPreview) {
+    const updateColorPreview = function () {
+        projectColorValue.textContent = projectColorInput.value;
+        projectColorPreview.style.backgroundColor = projectColorInput.value;
+    };
+
+    projectColorInput.addEventListener('input', updateColorPreview);
+    updateColorPreview();
+}
+
+const tipCalculator = document.getElementById('tipCalculator');
+const tipBillAmount = document.getElementById('tipBillAmount');
+const tipRate = document.getElementById('tipRate');
+const tipResult = document.getElementById('tipResult');
+
+if (tipCalculator && tipBillAmount && tipRate && tipResult) {
+    const amountFormatter = new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+    tipCalculator.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!tipCalculator.reportValidity()) return;
+
+        const bill = Number(tipBillAmount.value);
+        const rate = Number(tipRate.value);
+        if (!Number.isFinite(bill) || bill <= 0 || !Number.isFinite(rate)) {
+            tipResult.textContent = 'Enter a valid bill amount and try again.';
+            return;
+        }
+
+        const tip = bill * rate / 100;
+        tipResult.textContent = 'Tip: ' + amountFormatter.format(tip) + ' · Total: ' + amountFormatter.format(bill + tip);
+    });
+}
+
 const videoSearch = document.getElementById('videoSearch');
 const videoCards = Array.from(document.querySelectorAll('.video-card[data-video-category]'));
 const videoFilterButtons = Array.from(document.querySelectorAll('[data-video-filter]'));

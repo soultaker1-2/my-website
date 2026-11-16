@@ -45,6 +45,7 @@
           <nav class="lesson-nav" aria-label="Choose a learning level">
             <a href="#html">Simple lessons</a>
             <a href="#python">Python basics</a>
+            <a href="#mini-projects">Mini projects</a>
             <a href="#advanced">Advanced concepts</a>
           </nav>
           <div class="learning-progress" data-learning-progress>
@@ -304,6 +305,55 @@ print(greet("David"))</code></pre>
 if score &gt;= 50:
     print("You can code!")</code></pre>
             <p class="lesson-note">Python is not installed in this page's HTML/CSS/JavaScript playground. Use a Python 3 installation or a trusted online Python editor to run these examples.</p>
+          </section>
+
+          <section class="mini-projects" id="mini-projects" aria-labelledby="mini-projects-title">
+            <p class="level-label">Hands-on / Practice</p>
+            <h2 id="mini-projects-title">Build three small projects</h2>
+            <p>Try each working demo, then look at the code ideas behind it: events, input, and updating the page.</p>
+
+            <div class="mini-project-grid">
+              <article class="mini-project-card">
+                <p class="lesson-tag">PROJECT 01 / EVENTS</p>
+                <h3>Counter</h3>
+                <p>Use buttons to change a number and reset it.</p>
+                <output class="counter-value" id="projectCounterValue" aria-live="polite">0</output>
+                <div class="mini-project-actions">
+                  <button class="mini-project-button" id="decreaseCounter" type="button" aria-label="Decrease counter">−</button>
+                  <button class="mini-project-button" id="increaseCounter" type="button">Add one</button>
+                  <button class="mini-project-button secondary-project-button" id="resetCounter" type="button">Reset</button>
+                </div>
+              </article>
+
+              <article class="mini-project-card">
+                <p class="lesson-tag">PROJECT 02 / CSS</p>
+                <h3>Color mixer</h3>
+                <p>Choose a color and see JavaScript update the preview.</p>
+                <label for="projectColorInput">Choose a color</label>
+                <input id="projectColorInput" type="color" value="#e56b6f" />
+                <output class="color-value" id="projectColorValue" for="projectColorInput">#e56b6f</output>
+                <div class="color-preview" id="projectColorPreview" aria-label="Selected color preview"></div>
+              </article>
+
+              <article class="mini-project-card">
+                <p class="lesson-tag">PROJECT 03 / INPUT + MATH</p>
+                <h3>Tip calculator</h3>
+                <p>Enter a bill and tip rate to calculate the tip and total.</p>
+                <form id="tipCalculator">
+                  <label for="tipBillAmount">Bill amount</label>
+                  <input id="tipBillAmount" type="number" min="0.01" step="0.01" placeholder="e.g. 25.00" required />
+                  <label for="tipRate">Tip percentage</label>
+                  <select id="tipRate">
+                    <option value="10">10%</option>
+                    <option value="15" selected>15%</option>
+                    <option value="20">20%</option>
+                  </select>
+                  <button class="mini-project-button" type="submit">Calculate</button>
+                </form>
+                <p class="tip-result" id="tipResult" role="status" aria-live="polite">Your result will appear here.</p>
+                <p class="lesson-note">Amounts use the currency you entered; no currency conversion is applied.</p>
+              </article>
+            </div>
           </section>
 
           <section class="advanced-lessons" id="advanced" aria-labelledby="advanced-title">

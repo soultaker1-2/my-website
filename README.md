@@ -41,7 +41,7 @@ The HTML pages and service worker stay at the project root so their links work w
 
 - **`index.html`** is the default landing page. GitHub Pages looks for this file when someone opens the website.
 - **`portfolio.html`** presents the portfolio and learning paths. It shares much of its content with the homepage.
-- **`educatio.html`** contains HTML, CSS, JavaScript, and beginner Python lessons, quizzes, progress tracking, and the web coding playground.
+- **`educatio.html`** contains HTML, CSS, JavaScript, and beginner Python lessons, quizzes, mini-project demos, progress tracking, and the web coding playground.
 - **`video.html`** displays tutorial videos and lets visitors search and filter the video cards, including Python lessons.
 - **`contact.html`** contains the contact form. Sending a message uses the external Web3Forms service, so submitting it requires an internet connection.
 - **`game.html`** is the standalone Star Dodge arcade page. Its game itself does not need a connection after the page and assets have been cached.
@@ -67,6 +67,7 @@ This script is included by the main site pages. It checks for the relevant page 
 - Updates the lesson progress meter from the saved completed lesson IDs.
 - Filters video cards using the search field and topic buttons.
 - Runs the education-page code playground by putting the visitor's HTML, CSS, and JavaScript into a sandboxed iframe.
+- Powers three small education-page projects: a counter, a color mixer, and a tip calculator.
 - Opens and closes the mobile navigation menu and supports closing it with Escape.
 - Restores and changes the saved light/dark theme.
 - Adds the reading progress indicator, back-to-top button, and section reveal effects.
