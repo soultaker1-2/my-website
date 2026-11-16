@@ -1,4 +1,4 @@
-const CACHE_NAME = 'soul-program-offline-v8';
+const CACHE_NAME = 'soul-program-offline-v9';
 const CORE_FILES = [
   'index.html',
   'portfolio.html',
