@@ -40,7 +40,7 @@ The HTML pages and service worker stay at the project root so their links work w
 ## What each page does
 
 - **`index.html`** is the default landing page. GitHub Pages looks for this file when someone opens the website.
-- The homepage includes a live local clock and an interactive calendar with month navigation and date selection.
+- The homepage and portfolio include a live local clock and an interactive calendar with month navigation and date selection.
 - **`manifest.webmanifest`** provides the name, icons, and display settings for installing Soul Program as a Progressive Web App (PWA).
 - **`portfolio.html`** presents the portfolio and learning paths. It shares much of its content with the homepage.
 - **`educatio.html`** contains HTML, CSS, JavaScript, and beginner Python lessons, quizzes, a badge-earning Code Quest, progress tracking, and the web coding playground.

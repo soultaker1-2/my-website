@@ -73,6 +73,41 @@
         </div>
       </section>
 
+      <section class="date-time-calendar" id="calendar" aria-labelledby="calendar-title" data-date-time-calendar>
+        <div class="calendar-intro">
+          <p class="eyebrow">Your local date &amp; time</p>
+          <h2 id="calendar-title">A little <span>time check</span></h2>
+          <time class="calendar-clock" data-clock-time aria-live="off">--:--:--</time>
+          <p class="calendar-current-date" data-clock-date></p>
+          <p class="calendar-timezone" data-clock-zone></p>
+        </div>
+        <div class="calendar-panel">
+          <div class="calendar-heading">
+            <h3 data-calendar-month></h3>
+            <div class="calendar-controls">
+              <button type="button" data-calendar-previous aria-label="Show previous month">&larr;</button>
+              <button type="button" data-calendar-today>Today</button>
+              <button type="button" data-calendar-next aria-label="Show next month">&rarr;</button>
+            </div>
+          </div>
+          <table class="calendar-table" aria-label="Calendar">
+            <thead>
+              <tr>
+                <th scope="col"><abbr title="Sunday">Su</abbr></th>
+                <th scope="col"><abbr title="Monday">Mo</abbr></th>
+                <th scope="col"><abbr title="Tuesday">Tu</abbr></th>
+                <th scope="col"><abbr title="Wednesday">We</abbr></th>
+                <th scope="col"><abbr title="Thursday">Th</abbr></th>
+                <th scope="col"><abbr title="Friday">Fr</abbr></th>
+                <th scope="col"><abbr title="Saturday">Sa</abbr></th>
+              </tr>
+            </thead>
+            <tbody data-calendar-days></tbody>
+          </table>
+          <p class="calendar-selected-date" data-calendar-selected-date role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
       <section class="learning-paths" id="learning">
         <div class="section-heading">
           <p class="eyebrow">Learn to code</p>
