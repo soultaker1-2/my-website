@@ -250,10 +250,60 @@ section.home {
   box-shadow: 0 0.8rem 2rem rgba(183, 75, 75, 0.2);
 }
 
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.install-app-button {
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.install-app-status {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.install-help {
+  max-width: 46rem;
+  margin-top: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: rgba(17, 21, 29, 0.62);
+}
+
+.install-help summary {
+  padding: 1rem 1.2rem;
+  color: var(--accent-bright);
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.install-help ol {
+  margin: 0;
+  padding: 0 1.4rem 1.2rem 3.2rem;
+  color: var(--muted);
+  font-size: 1.35rem;
+  line-height: 1.7;
+}
+
+.install-help strong {
+  color: var(--text);
+}
+
 .contact-btn:hover,
 .quiz-submit:hover,
 .playground-run:hover,
-.contact-form button:hover {
+.contact-form button:hover,
+.install-app-button:hover {
   background: linear-gradient(135deg, #bd4d55, #f0797e);
   transform: translateY(-2px);
 }

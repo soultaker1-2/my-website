@@ -15,7 +15,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" href="assets/images/icons/app-icon-192.png" />
     <link rel="stylesheet" href="assets/css/style1.css?v=4" />
-    <link rel="stylesheet" href="assets/css/style-modern.css?v=5" />
+    <link rel="stylesheet" href="assets/css/style-modern.css?v=6" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -70,7 +70,21 @@
             </a>
           </div>
 
-          <a href="contact.html" class="contact-btn">Get In Touch</a>
+          <div class="home-actions">
+            <a href="contact.html" class="contact-btn">Get In Touch</a>
+            <button class="contact-btn install-app-button" id="installAppButton" type="button" aria-describedby="installAppStatus">
+              <i class="fa-solid fa-download" aria-hidden="true"></i> Install App
+            </button>
+          </div>
+          <p class="install-app-status" id="installAppStatus" role="status" aria-live="polite" hidden></p>
+          <details class="install-help">
+            <summary>How to install on iPhone or iPad</summary>
+            <ol>
+              <li>Open this website in Safari.</li>
+              <li>Tap the Share button (the square with an arrow).</li>
+              <li>Choose <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>.</li>
+            </ol>
+          </details>
         </div>
       </section>
 
@@ -285,7 +299,7 @@
       <p><strong>Soul Program</strong> • Built for modern web experiences.</p>
     </footer>
 
-  <script src="assets/js/jss.js?v=8"></script>
+  <script src="assets/js/jss.js?v=9"></script>
     <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
     <script>
       window.botpress.init({

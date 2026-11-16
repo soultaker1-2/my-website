@@ -689,6 +689,46 @@ if ('IntersectionObserver' in window) {
     });
 }
 
+const installAppButton = document.getElementById('installAppButton');
+const installAppStatus = document.getElementById('installAppStatus');
+
+if (installAppButton && installAppStatus) {
+    let installPromptEvent = null;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true;
+
+    if (isStandalone) {
+        installAppButton.hidden = true;
+    }
+
+    window.addEventListener('beforeinstallprompt', function (event) {
+        event.preventDefault();
+        installPromptEvent = event;
+    });
+
+    installAppButton.addEventListener('click', async function () {
+        if (!installPromptEvent) {
+            installAppStatus.textContent = 'To install, open your browser menu and choose Install app or Add to Home Screen.';
+            installAppStatus.hidden = false;
+            return;
+        }
+
+        installPromptEvent.prompt();
+        const choice = await installPromptEvent.userChoice;
+        installPromptEvent = null;
+
+        if (choice.outcome === 'accepted') {
+            installAppStatus.textContent = 'Soul Program is being installed.';
+        }
+    });
+
+    window.addEventListener('appinstalled', function () {
+        installAppButton.hidden = true;
+        installAppStatus.textContent = 'Soul Program has been installed.';
+        installAppStatus.hidden = false;
+    });
+}
+
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js').catch(function (error) {
         console.error('Offline site caching could not be enabled.', error);
