@@ -113,70 +113,101 @@ function updateLearningProgress() {
 
 updateLearningProgress();
 
-const projectCounterValue = document.getElementById('projectCounterValue');
-const decreaseCounter = document.getElementById('decreaseCounter');
-const increaseCounter = document.getElementById('increaseCounter');
-const resetCounter = document.getElementById('resetCounter');
+const codeQuest = document.querySelector('[data-code-quest]');
 
-if (projectCounterValue && decreaseCounter && increaseCounter && resetCounter) {
-    let count = 0;
-    const renderCount = function () {
-        projectCounterValue.textContent = String(count);
-    };
-
-    decreaseCounter.addEventListener('click', function () {
-        count -= 1;
-        renderCount();
+if (codeQuest) {
+    const questLevels = Array.from(codeQuest.querySelectorAll('[data-quest-level]'));
+    const questProgress = codeQuest.querySelector('[data-quest-progress]');
+    const questProgressLabel = codeQuest.querySelector('[data-quest-progress-label]');
+    const questStorageNotice = codeQuest.querySelector('[data-quest-storage-notice]');
+    const questFinale = codeQuest.querySelector('[data-quest-finale]');
+    const questStorageKey = 'soul-code-quest-badges';
+    const validLevelIds = questLevels.map(function (level) {
+        return level.dataset.questLevel;
     });
-    increaseCounter.addEventListener('click', function () {
-        count += 1;
-        renderCount();
-    });
-    resetCounter.addEventListener('click', function () {
-        count = 0;
-        renderCount();
-    });
-}
+    let earnedBadges = [];
 
-const projectColorInput = document.getElementById('projectColorInput');
-const projectColorValue = document.getElementById('projectColorValue');
-const projectColorPreview = document.getElementById('projectColorPreview');
-
-if (projectColorInput && projectColorValue && projectColorPreview) {
-    const updateColorPreview = function () {
-        projectColorValue.textContent = projectColorInput.value;
-        projectColorPreview.style.backgroundColor = projectColorInput.value;
-    };
-
-    projectColorInput.addEventListener('input', updateColorPreview);
-    updateColorPreview();
-}
-
-const tipCalculator = document.getElementById('tipCalculator');
-const tipBillAmount = document.getElementById('tipBillAmount');
-const tipRate = document.getElementById('tipRate');
-const tipResult = document.getElementById('tipResult');
-
-if (tipCalculator && tipBillAmount && tipRate && tipResult) {
-    const amountFormatter = new Intl.NumberFormat(undefined, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-
-    tipCalculator.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (!tipCalculator.reportValidity()) return;
-
-        const bill = Number(tipBillAmount.value);
-        const rate = Number(tipRate.value);
-        if (!Number.isFinite(bill) || bill <= 0 || !Number.isFinite(rate)) {
-            tipResult.textContent = 'Enter a valid bill amount and try again.';
-            return;
+    try {
+        const savedBadges = JSON.parse(localStorage.getItem(questStorageKey) || '[]');
+        if (Array.isArray(savedBadges)) {
+            for (const levelId of validLevelIds) {
+                if (!savedBadges.includes(levelId)) break;
+                earnedBadges.push(levelId);
+            }
         }
+    } catch (error) {
+        questStorageNotice.textContent = 'Progress cannot be saved in this browser, but you can still play this visit.';
+        questStorageNotice.hidden = false;
+    }
 
-        const tip = bill * rate / 100;
-        tipResult.textContent = 'Tip: ' + amountFormatter.format(tip) + ' · Total: ' + amountFormatter.format(bill + tip);
+    const renderQuest = function () {
+        questLevels.forEach(function (level, index) {
+            const levelId = level.dataset.questLevel;
+            const isEarned = earnedBadges.includes(levelId);
+            const isUnlocked = index <= earnedBadges.length;
+            const options = level.querySelector('[data-quest-options]');
+            const checkButton = level.querySelector('[data-quest-check]');
+            const badge = level.querySelector('[data-quest-badge]');
+
+            level.classList.toggle('is-locked', !isUnlocked);
+            level.classList.toggle('is-complete', isEarned);
+            options.disabled = !isUnlocked || isEarned;
+            checkButton.disabled = !isUnlocked || isEarned;
+            badge.hidden = !isEarned;
+
+            if (isEarned) {
+                level.querySelector('[data-quest-feedback]').textContent = 'Badge earned! Level complete.';
+            }
+        });
+
+        if (questProgress) questProgress.value = earnedBadges.length;
+        if (questProgressLabel) {
+            questProgressLabel.textContent = earnedBadges.length + ' of ' + questLevels.length + ' badges earned';
+        }
+        if (questFinale) questFinale.hidden = earnedBadges.length !== questLevels.length;
+    };
+
+    questLevels.forEach(function (level, index) {
+        const checkButton = level.querySelector('[data-quest-check]');
+        const options = level.querySelector('[data-quest-options]');
+        const feedback = level.querySelector('[data-quest-feedback]');
+
+        checkButton.addEventListener('click', function () {
+            if (index !== earnedBadges.length) return;
+
+            const selectedAnswer = options.querySelector('input[type="radio"]:checked');
+            if (!selectedAnswer) {
+                feedback.textContent = 'Choose an answer to continue.';
+                feedback.classList.add('is-incorrect');
+                return;
+            }
+
+            if (selectedAnswer.value !== options.dataset.answer) {
+                feedback.textContent = 'Not quite — try another answer.';
+                feedback.classList.add('is-incorrect');
+                return;
+            }
+
+            feedback.classList.remove('is-incorrect');
+            earnedBadges.push(level.dataset.questLevel);
+
+            try {
+                localStorage.setItem(questStorageKey, JSON.stringify(earnedBadges));
+            } catch (error) {
+                questStorageNotice.textContent = 'Badge progress will last for this visit only because browser storage is unavailable.';
+                questStorageNotice.hidden = false;
+            }
+
+            renderQuest();
+            if (earnedBadges.length === questLevels.length) {
+                feedback.textContent = 'Correct! Final badge earned — quest complete!';
+            } else {
+                feedback.textContent = 'Correct! Badge earned. The next level is unlocked.';
+            }
+        });
     });
+
+    renderQuest();
 }
 
 const videoSearch = document.getElementById('videoSearch');

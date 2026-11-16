@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests" />
     <title>Education | Soul Program</title>
     <link rel="stylesheet" href="assets/css/style1.css?v=4" />
-    <link rel="stylesheet" href="assets/css/style-modern.css?v=3" />
+    <link rel="stylesheet" href="assets/css/style-modern.css?v=4" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -45,7 +45,7 @@
           <nav class="lesson-nav" aria-label="Choose a learning level">
             <a href="#html">Simple lessons</a>
             <a href="#python">Python basics</a>
-            <a href="#mini-projects">Mini projects</a>
+            <a href="#code-quest">Code quest</a>
             <a href="#advanced">Advanced concepts</a>
           </nav>
           <div class="learning-progress" data-learning-progress>
@@ -307,53 +307,80 @@ if score &gt;= 50:
             <p class="lesson-note">Python is not installed in this page's HTML/CSS/JavaScript playground. Use a Python 3 installation or a trusted online Python editor to run these examples.</p>
           </section>
 
-          <section class="mini-projects" id="mini-projects" aria-labelledby="mini-projects-title">
-            <p class="level-label">Hands-on / Practice</p>
-            <h2 id="mini-projects-title">Build three small projects</h2>
-            <p>Try each working demo, then look at the code ideas behind it: events, input, and updating the page.</p>
-
-            <div class="mini-project-grid">
-              <article class="mini-project-card">
-                <p class="lesson-tag">PROJECT 01 / EVENTS</p>
-                <h3>Counter</h3>
-                <p>Use buttons to change a number and reset it.</p>
-                <output class="counter-value" id="projectCounterValue" aria-live="polite">0</output>
-                <div class="mini-project-actions">
-                  <button class="mini-project-button" id="decreaseCounter" type="button" aria-label="Decrease counter">−</button>
-                  <button class="mini-project-button" id="increaseCounter" type="button">Add one</button>
-                  <button class="mini-project-button secondary-project-button" id="resetCounter" type="button">Reset</button>
+          <section class="code-quest" id="code-quest" aria-labelledby="code-quest-title" data-code-quest>
+            <div class="quest-header">
+              <p class="level-label">Interactive challenge / 3 levels</p>
+              <h2 id="code-quest-title">The <span>Code Quest</span></h2>
+              <p>Answer each challenge to unlock the next level. Earn a badge for every skill and collect all three.</p>
+              <div class="quest-progress">
+                <div class="quest-progress-label">
+                  <span>Your journey</span>
+                  <span data-quest-progress-label>0 of 3 badges earned</span>
                 </div>
+                <progress max="3" value="0" data-quest-progress aria-label="Code Quest badge progress">0 of 3</progress>
+              </div>
+              <p class="quest-storage-notice" data-quest-storage-notice role="status" hidden></p>
+            </div>
+
+            <div class="quest-levels">
+              <article class="quest-level" data-quest-level="html" data-level-number="01">
+                <div class="quest-level-heading">
+                  <div>
+                    <p class="lesson-tag">LEVEL 01 / STRUCTURE</p>
+                    <h3>HTML Pathfinder</h3>
+                  </div>
+                  <span class="quest-badge" data-quest-badge hidden aria-label="HTML Pathfinder badge earned">✦</span>
+                </div>
+                <p>Choose the element that represents the main content of a page.</p>
+                <fieldset class="quest-options" data-quest-options data-answer="main">
+                  <legend>Your first challenge</legend>
+                  <label><input type="radio" name="quest-html" value="section" /> <code>&lt;section&gt;</code></label>
+                  <label><input type="radio" name="quest-html" value="main" /> <code>&lt;main&gt;</code></label>
+                  <label><input type="radio" name="quest-html" value="footer" /> <code>&lt;footer&gt;</code></label>
+                </fieldset>
+                <button class="quest-check-button" type="button" data-quest-check>Check answer</button>
+                <p class="quest-feedback" data-quest-feedback role="status" aria-live="polite"></p>
               </article>
 
-              <article class="mini-project-card">
-                <p class="lesson-tag">PROJECT 02 / CSS</p>
-                <h3>Color mixer</h3>
-                <p>Choose a color and see JavaScript update the preview.</p>
-                <label for="projectColorInput">Choose a color</label>
-                <input id="projectColorInput" type="color" value="#e56b6f" />
-                <output class="color-value" id="projectColorValue" for="projectColorInput">#e56b6f</output>
-                <div class="color-preview" id="projectColorPreview" aria-label="Selected color preview"></div>
+              <article class="quest-level is-locked" data-quest-level="css" data-level-number="02">
+                <div class="quest-level-heading">
+                  <div>
+                    <p class="lesson-tag">LEVEL 02 / STYLE</p>
+                    <h3>CSS Spellcaster</h3>
+                  </div>
+                  <span class="quest-badge" data-quest-badge hidden aria-label="CSS Spellcaster badge earned">✦</span>
+                </div>
+                <p>Pick the CSS declaration that changes an element's text color to purple.</p>
+                <fieldset class="quest-options" data-quest-options data-answer="color" disabled>
+                  <legend>Choose the correct declaration</legend>
+                  <label><input type="radio" name="quest-css" value="background" /> <code>background: purple;</code></label>
+                  <label><input type="radio" name="quest-css" value="font" /> <code>font: purple;</code></label>
+                  <label><input type="radio" name="quest-css" value="color" /> <code>color: purple;</code></label>
+                </fieldset>
+                <button class="quest-check-button" type="button" data-quest-check disabled>Check answer</button>
+                <p class="quest-feedback" data-quest-feedback role="status" aria-live="polite"></p>
               </article>
 
-              <article class="mini-project-card">
-                <p class="lesson-tag">PROJECT 03 / INPUT + MATH</p>
-                <h3>Tip calculator</h3>
-                <p>Enter a bill and tip rate to calculate the tip and total.</p>
-                <form id="tipCalculator">
-                  <label for="tipBillAmount">Bill amount</label>
-                  <input id="tipBillAmount" type="number" min="0.01" step="0.01" placeholder="e.g. 25.00" required />
-                  <label for="tipRate">Tip percentage</label>
-                  <select id="tipRate">
-                    <option value="10">10%</option>
-                    <option value="15" selected>15%</option>
-                    <option value="20">20%</option>
-                  </select>
-                  <button class="mini-project-button" type="submit">Calculate</button>
-                </form>
-                <p class="tip-result" id="tipResult" role="status" aria-live="polite">Your result will appear here.</p>
-                <p class="lesson-note">Amounts use the currency you entered; no currency conversion is applied.</p>
+              <article class="quest-level is-locked" data-quest-level="javascript" data-level-number="03">
+                <div class="quest-level-heading">
+                  <div>
+                    <p class="lesson-tag">LEVEL 03 / INTERACTION</p>
+                    <h3>JavaScript Guardian</h3>
+                  </div>
+                  <span class="quest-badge" data-quest-badge hidden aria-label="JavaScript Guardian badge earned">✦</span>
+                </div>
+                <p>Which line listens for a click on a button and runs <code>startGame</code>?</p>
+                <fieldset class="quest-options" data-quest-options data-answer="listener" disabled>
+                  <legend>Choose the event listener</legend>
+                  <label><input type="radio" name="quest-javascript" value="style" /> <code>button.style.click = startGame;</code></label>
+                  <label><input type="radio" name="quest-javascript" value="listener" /> <code>button.addEventListener('click', startGame);</code></label>
+                  <label><input type="radio" name="quest-javascript" value="text" /> <code>button.textContent = startGame;</code></label>
+                </fieldset>
+                <button class="quest-check-button" type="button" data-quest-check disabled>Check answer</button>
+                <p class="quest-feedback" data-quest-feedback role="status" aria-live="polite"></p>
               </article>
             </div>
+            <p class="quest-finale" data-quest-finale role="status" aria-live="polite" hidden>Quest complete! You earned every badge. Keep building awesome things!</p>
           </section>
 
           <section class="advanced-lessons" id="advanced" aria-labelledby="advanced-title">
@@ -529,7 +556,7 @@ h1 { color: #b74b4b; }</textarea>
         </div>
       </section>
     </main>
-    <script src="assets/js/jss.js?v=5"></script>
+    <script src="assets/js/jss.js?v=6"></script>
     <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
     <script>
       window.botpress.init({
