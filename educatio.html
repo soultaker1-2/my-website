@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Learn HTML, CSS, and JavaScript with lessons, quizzes, and an interactive coding playground." />
+    <meta name="description" content="Learn HTML, CSS, JavaScript, and Python with beginner-friendly lessons, quizzes, and coding practice." />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests" />
     <title>Education | Soul Program</title>
@@ -44,6 +44,7 @@
         <div class="home-content">
           <nav class="lesson-nav" aria-label="Choose a learning level">
             <a href="#html">Simple lessons</a>
+            <a href="#python">Python basics</a>
             <a href="#advanced">Advanced concepts</a>
           </nav>
           <div class="learning-progress" data-learning-progress>
@@ -272,6 +273,38 @@
             <span>Lesson 3 of 3</span>
             <a href="#advanced">Next: Advanced</a>
           </nav>
+
+          <section class="advanced-lessons" id="python" aria-labelledby="python-title">
+            <p class="level-label">Optional / Programming</p>
+            <h2 id="python-title"><span>Python</span> - Start programming</h2>
+            <p><strong>Python</strong> is a general-purpose programming language known for readable code. It is used for automation, websites and server-side apps, data work, and games. Unlike JavaScript, Python usually runs in a Python interpreter rather than directly in a web browser.</p>
+
+            <h3>Your first Python program</h3>
+            <p>Save this in a file named <code>hello.py</code>, then run it with <code>python hello.py</code> (or <code>py hello.py</code> on Windows).</p>
+            <pre class="lesson-code"><code>name = input("What is your name? ")
+print("Hello, " + name + "!")
+
+for number in range(1, 4):
+    print("Practice makes progress:", number)</code></pre>
+            <p><code>input()</code> reads text from the user, <code>print()</code> displays a result, and <code>range(1, 4)</code> produces 1, 2, and 3. Indentation groups the lines that belong to a loop.</p>
+
+            <h3>Make decisions and reuse code</h3>
+            <pre class="lesson-code"><code>def greet(name):
+    if name:
+        return "Welcome, " + name
+    return "Welcome, learner"
+
+print(greet("David"))</code></pre>
+            <p>This example defines a function, checks a condition, and returns a message. Python uses indentation to show which instructions belong inside the function and the <code>if</code> block.</p>
+
+            <h3>Try it yourself</h3>
+            <p>Change the name, then add an <code>if</code> statement that prints “You can code!” when a score is at least 50:</p>
+            <pre class="lesson-code"><code>score = 72
+
+if score &gt;= 50:
+    print("You can code!")</code></pre>
+            <p class="lesson-note">Python is not installed in this page's HTML/CSS/JavaScript playground. Use a Python 3 installation or a trusted online Python editor to run these examples.</p>
+          </section>
 
           <section class="advanced-lessons" id="advanced" aria-labelledby="advanced-title">
             <p class="level-label">04 / Advanced</p>
