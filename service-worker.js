@@ -1,4 +1,4 @@
-const CACHE_NAME = 'soul-program-offline-v3';
+const CACHE_NAME = 'soul-program-offline-v4';
 const CORE_FILES = [
   'index.html',
   'portfolio.html',
@@ -7,8 +7,8 @@ const CORE_FILES = [
   'contact.html',
   'game.html',
   'assets/css/style1.css?v=4',
-  'assets/css/style-modern.css?v=4',
-  'assets/js/jss.js?v=7',
+  'assets/css/style-modern.css?v=5',
+  'assets/js/jss.js?v=8',
   'assets/css/game.css',
   'assets/js/game.js',
   'assets/images/logo.png',

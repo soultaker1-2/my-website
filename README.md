@@ -40,6 +40,7 @@ The HTML pages and service worker stay at the project root so their links work w
 ## What each page does
 
 - **`index.html`** is the default landing page. GitHub Pages looks for this file when someone opens the website.
+- The homepage includes a live local clock and an interactive calendar with month navigation and date selection.
 - **`portfolio.html`** presents the portfolio and learning paths. It shares much of its content with the homepage.
 - **`educatio.html`** contains HTML, CSS, JavaScript, and beginner Python lessons, quizzes, a badge-earning Code Quest, progress tracking, and the web coding playground.
 - **`video.html`** displays tutorial videos and lets visitors search and filter the video cards, including Python lessons.
@@ -65,6 +66,7 @@ This script is included by the main site pages. It checks for the relevant page 
 - Powers the small welcome-message demo when its example button is present.
 - Checks lesson quiz answers, displays hints or success messages, and saves completed lessons in `localStorage`.
 - Updates the lesson progress meter from the saved completed lesson IDs.
+- Displays the homepage's local time and date and powers its interactive calendar.
 - Filters video cards using the search field and topic buttons.
 - Runs the education-page code playground by putting the visitor's HTML, CSS, and JavaScript into a sandboxed iframe.
 - Powers the Education page's 15-question, three-level Code Quest and saves question progress and earned badges in `localStorage`.

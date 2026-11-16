@@ -113,6 +113,112 @@ function updateLearningProgress() {
 
 updateLearningProgress();
 
+const dateTimeCalendar = document.querySelector('[data-date-time-calendar]');
+
+if (dateTimeCalendar) {
+    const clockTime = dateTimeCalendar.querySelector('[data-clock-time]');
+    const clockDate = dateTimeCalendar.querySelector('[data-clock-date]');
+    const clockZone = dateTimeCalendar.querySelector('[data-clock-zone]');
+    const monthLabel = dateTimeCalendar.querySelector('[data-calendar-month]');
+    const daysContainer = dateTimeCalendar.querySelector('[data-calendar-days]');
+    const selectedDateLabel = dateTimeCalendar.querySelector('[data-calendar-selected-date]');
+    const timeFormatter = new Intl.DateTimeFormat(undefined, {
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    const dateFormatter = new Intl.DateTimeFormat(undefined, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    const monthFormatter = new Intl.DateTimeFormat(undefined, {
+        month: 'long',
+        year: 'numeric'
+    });
+    const zoneFormatter = new Intl.DateTimeFormat(undefined, {
+        timeZoneName: 'short'
+    });
+    const today = new Date();
+    let displayedMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    let selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+    const dateKey = function (date) {
+        return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' +
+            String(date.getDate()).padStart(2, '0');
+    };
+
+    const updateClock = function () {
+        const now = new Date();
+        clockTime.textContent = timeFormatter.format(now);
+        clockTime.dateTime = now.toISOString();
+        clockDate.textContent = dateFormatter.format(now);
+        const zonePart = zoneFormatter.formatToParts(now).find(function (part) {
+            return part.type === 'timeZoneName';
+        });
+        clockZone.textContent = zonePart ? zonePart.value : 'Local time';
+    };
+
+    const renderCalendar = function () {
+        const year = displayedMonth.getFullYear();
+        const month = displayedMonth.getMonth();
+        const firstWeekday = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const rowCount = Math.ceil((firstWeekday + daysInMonth) / 7);
+        const fragment = document.createDocumentFragment();
+        const currentDate = new Date();
+
+        monthLabel.textContent = monthFormatter.format(displayedMonth);
+        for (let week = 0; week < rowCount; week += 1) {
+            const row = document.createElement('tr');
+            for (let weekday = 0; weekday < 7; weekday += 1) {
+                const day = week * 7 + weekday - firstWeekday + 1;
+                const cell = document.createElement('td');
+                if (day > 0 && day <= daysInMonth) {
+                    const date = new Date(year, month, day);
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.textContent = String(day);
+                    button.setAttribute('aria-label', dateFormatter.format(date));
+                    button.setAttribute('aria-pressed', String(dateKey(date) === dateKey(selectedDate)));
+                    button.classList.toggle('is-today', dateKey(date) === dateKey(currentDate));
+                    button.addEventListener('click', function () {
+                        selectedDate = date;
+                        renderCalendar();
+                        daysContainer.querySelector('[aria-pressed="true"]').focus();
+                    });
+                    cell.appendChild(button);
+                }
+                row.appendChild(cell);
+            }
+            fragment.appendChild(row);
+        }
+
+        daysContainer.replaceChildren(fragment);
+        selectedDateLabel.textContent = 'Selected: ' + dateFormatter.format(selectedDate);
+    };
+
+    dateTimeCalendar.querySelector('[data-calendar-previous]').addEventListener('click', function () {
+        displayedMonth = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth() - 1, 1);
+        renderCalendar();
+    });
+    dateTimeCalendar.querySelector('[data-calendar-next]').addEventListener('click', function () {
+        displayedMonth = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth() + 1, 1);
+        renderCalendar();
+    });
+    dateTimeCalendar.querySelector('[data-calendar-today]').addEventListener('click', function () {
+        const now = new Date();
+        selectedDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        displayedMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        renderCalendar();
+    });
+
+    updateClock();
+    renderCalendar();
+    window.setInterval(updateClock, 1000);
+}
+
 const codeQuest = document.querySelector('[data-code-quest]');
 
 if (codeQuest) {
