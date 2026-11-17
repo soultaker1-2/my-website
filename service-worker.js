@@ -1,4 +1,4 @@
-const CACHE_NAME = 'soul-program-offline-v12';
+const CACHE_NAME = 'soul-program-offline-v13';
 const CORE_FILES = [
   'index.html',
   'portfolio.html',
@@ -28,7 +28,10 @@ self.addEventListener('install', function (event) {
         const files = CORE_FILES.map(function (file) {
           return new URL(file, self.registration.scope).href;
         });
-        return cache.addAll(files);
+        const requests = files.map(function (file) {
+          return new Request(file, { cache: 'reload' });
+        });
+        return cache.addAll(requests);
       })
       .then(function () {
         return self.skipWaiting();
@@ -62,7 +65,7 @@ self.addEventListener('fetch', function (event) {
       .then(function (cachedResponse) {
         if (cachedResponse && request.mode !== 'navigate') return cachedResponse;
 
-        return fetch(request)
+        return fetch(new Request(request, { cache: 'reload' }))
           .then(function (networkResponse) {
             if (networkResponse.ok) {
               const responseCopy = networkResponse.clone();

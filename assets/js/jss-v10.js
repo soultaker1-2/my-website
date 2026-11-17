@@ -734,8 +734,7 @@ if ('serviceWorker' in navigator) {
     let refreshing = false;
 
     navigator.serviceWorker.addEventListener('controllerchange', function () {
-        const isHomePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html');
-        if (hasController && isHomePage && !refreshing) {
+        if (hasController && !refreshing) {
             refreshing = true;
             window.location.reload();
         }
