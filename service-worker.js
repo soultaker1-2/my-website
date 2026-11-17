@@ -1,4 +1,4 @@
-const CACHE_NAME = 'soul-program-offline-v11';
+const CACHE_NAME = 'soul-program-offline-v12';
 const CORE_FILES = [
   'index.html',
   'portfolio.html',
@@ -8,8 +8,8 @@ const CORE_FILES = [
   'game.html',
   'manifest.webmanifest',
   'assets/css/style1.css?v=4',
-  'assets/css/style-modern.css?v=7',
-  'assets/js/jss.js?v=9',
+  'assets/css/style-modern-v8.css',
+  'assets/js/jss-v10.js',
   'assets/css/game.css?v=2',
   'assets/js/game.js',
   'assets/images/icons/app-icon-192.png',
@@ -58,7 +58,7 @@ self.addEventListener('fetch', function (event) {
   if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
 
   event.respondWith(
-    caches.match(request, { ignoreSearch: true })
+    caches.match(request)
       .then(function (cachedResponse) {
         if (cachedResponse && request.mode !== 'navigate') return cachedResponse;
 

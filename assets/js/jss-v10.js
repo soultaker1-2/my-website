@@ -730,7 +730,23 @@ if (installAppButton && installAppStatus) {
 }
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js').catch(function (error) {
-        console.error('Offline site caching could not be enabled.', error);
+    let hasController = Boolean(navigator.serviceWorker.controller);
+    let refreshing = false;
+
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+        const isHomePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html');
+        if (hasController && isHomePage && !refreshing) {
+            refreshing = true;
+            window.location.reload();
+        }
+        hasController = true;
     });
+
+    navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' })
+        .then(function (registration) {
+            return registration.update();
+        })
+        .catch(function (error) {
+            console.error('Offline site caching could not be enabled or updated.', error);
+        });
 }

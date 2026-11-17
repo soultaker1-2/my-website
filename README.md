@@ -17,13 +17,13 @@ website/
 └── assets/
     ├── css/
     │   ├── style1.css          # Base site styles and layout
-    │   ├── style-modern.css    # Modern theme and responsive refinements
+    │   ├── style-modern-v8.css # App theme and responsive refinements
     │   ├── game.css            # Star Dodge styles
     │   └── archive/
     │       ├── style1.fixed.css # Older stylesheet; not currently linked
     │       └── video.css        # Empty old stylesheet; not currently linked
     ├── js/
-    │   ├── jss.js              # Shared site interactions
+    │   ├── jss-v10.js          # Shared site interactions and app updates
     │   └── game.js             # Star Dodge game logic
     └── images/
         ├── logo.png
@@ -53,14 +53,14 @@ Each HTML page links to its stylesheets with `<link>` and loads JavaScript with 
 ## What the stylesheets do
 
 - **`assets/css/style1.css`** supplies the shared base styles, including the general page layout, typography, and components.
-- **`assets/css/style-modern.css`** is loaded after the base file. It adds the app-matched dark/light theme, responsive navigation and layouts, modern cards, and refinements for lessons, videos, and forms. Because it loads second, its matching CSS rules can override the base styles.
+- **`assets/css/style-modern-v8.css`** is loaded after the base file. It adds the app-matched dark/light theme, responsive navigation and layouts, modern cards, and refinements for lessons, videos, and forms. Because it loads second, its matching CSS rules can override the base styles.
 - **`assets/css/game.css`** styles only the standalone game page.
 - The site header and Star Dodge use the installed app icon and its navy, turquoise, and violet palette.
 - **`assets/css/archive/style1.fixed.css`** and **`assets/css/archive/video.css`** are kept for reference, but no current page loads them. The `video.css` file is empty.
 
 ## What the JavaScript does
 
-### `assets/js/jss.js` — shared website behavior
+### `assets/js/jss-v10.js` — shared website behavior
 
 This script is included by the main site pages. It checks for the relevant page elements before attaching page-specific behavior, so a feature only runs on a page that contains it.
 
@@ -89,7 +89,7 @@ The game script draws the starfield, ship, and meteors on an HTML `<canvas>`. It
 
 ### `service-worker.js` — offline cache
 
-The browser installs this worker after visiting the site over a supported web origin. During installation it caches the core pages and local assets. On a later visit without a connection, it can return those cached files, including the game. When the worker version changes, it removes an older cache with the same project prefix.
+The browser installs this worker after visiting the site over a supported web origin. During installation it caches the core pages and local assets. On a later visit without a connection, it can return those cached files, including the game. When the worker version changes, it removes an older cache with the same project prefix. While online, the site checks for worker updates; after an update takes control, the app home page reloads once to show the new assets.
 
 Offline support needs the website to be served through HTTPS (GitHub Pages provides HTTPS) or `localhost`; opening an HTML file directly with a `file://` address does not enable service workers. The visitor must open the site online at least once so the files can be cached. External services such as video hosting, web chat, icons loaded from a CDN, and the contact form still need internet access.
 
