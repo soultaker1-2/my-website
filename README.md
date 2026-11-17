@@ -53,8 +53,9 @@ Each HTML page links to its stylesheets with `<link>` and loads JavaScript with 
 ## What the stylesheets do
 
 - **`assets/css/style1.css`** supplies the shared base styles, including the general page layout, typography, and components.
-- **`assets/css/style-modern.css`** is loaded after the base file. It adds the site's dark/light theme colors, responsive navigation and layouts, modern cards, and refinements for lessons, videos, and forms. Because it loads second, its matching CSS rules can override the base styles.
+- **`assets/css/style-modern.css`** is loaded after the base file. It adds the app-matched dark/light theme, responsive navigation and layouts, modern cards, and refinements for lessons, videos, and forms. Because it loads second, its matching CSS rules can override the base styles.
 - **`assets/css/game.css`** styles only the standalone game page.
+- The site header and Star Dodge use the installed app icon and its navy, turquoise, and violet palette.
 - **`assets/css/archive/style1.fixed.css`** and **`assets/css/archive/video.css`** are kept for reference, but no current page loads them. The `video.css` file is empty.
 
 ## What the JavaScript does

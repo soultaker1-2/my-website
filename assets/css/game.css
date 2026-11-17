@@ -3,13 +3,13 @@
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --page: #090b10;
-  --surface: #11151d;
-  --line: rgba(255, 255, 255, 0.1);
-  --text: #f3f5f8;
-  --muted: #aab3c1;
-  --accent: #ff858b;
-  --accent-dark: #bd4d55;
+  --page: #09131e;
+  --surface: #101f2a;
+  --line: rgba(188, 226, 239, 0.13);
+  --text: #f3f8fa;
+  --muted: #a9bdc6;
+  --accent: #61d5c6;
+  --accent-dark: #5946b7;
 }
 
 * {
@@ -21,7 +21,7 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    radial-gradient(ellipse at 50% 20%, rgba(119, 43, 62, 0.24), transparent 44%),
+    radial-gradient(ellipse at 50% 20%, rgba(68, 189, 177, 0.18), transparent 44%),
     radial-gradient(ellipse at 0 90%, rgba(36, 67, 117, 0.16), transparent 38%),
     var(--page);
   color: var(--text);
@@ -35,7 +35,7 @@ a {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid #ffc0c1;
+  outline: 3px solid #a2eee3;
   outline-offset: 3px;
 }
 
@@ -70,8 +70,12 @@ a:focus-visible {
 }
 
 .brand-mark {
-  color: var(--accent);
-  font-size: 27px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(97, 213, 198, 0.28);
+  border-radius: 9px;
+  box-shadow: 0 4px 16px rgba(97, 213, 198, 0.12);
+  object-fit: cover;
 }
 
 .back-link {
@@ -161,6 +165,8 @@ h1 span {
 .playfield-wrap {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  min-width: 0;
   min-height: 250px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 19px;
@@ -231,9 +237,9 @@ canvas {
 .primary-button {
   padding: 0 20px;
   border-color: transparent;
-  background: linear-gradient(135deg, var(--accent-dark), #e46b72);
+  background: linear-gradient(135deg, var(--accent-dark), #237f83);
   font-weight: 800;
-  box-shadow: 0 8px 24px rgba(189, 77, 85, 0.22);
+  box-shadow: 0 8px 24px rgba(74, 113, 197, 0.22);
 }
 
 .primary-button:hover:not(:disabled) {
@@ -270,8 +276,8 @@ canvas {
 
 .move-button:hover:not(:disabled),
 .pause-button:hover:not(:disabled) {
-  border-color: rgba(255, 133, 139, 0.55);
-  background: rgba(255, 133, 139, 0.12);
+  border-color: rgba(97, 213, 198, 0.55);
+  background: rgba(97, 213, 198, 0.12);
 }
 
 .pause-button {
@@ -329,7 +335,8 @@ footer {
   }
 
   .playfield-wrap {
-    min-height: 220px;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
   }
 
   .overlay-card {
@@ -339,6 +346,20 @@ footer {
   .overlay-card p {
     margin: 6px 0 12px;
     font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .game-overlay {
+    padding: 10px;
+  }
+
+  .overlay-card {
+    padding: 14px;
+  }
+
+  .overlay-card h2 {
+    font-size: clamp(18px, 5vw, 24px);
   }
 }
 

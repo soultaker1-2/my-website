@@ -560,7 +560,7 @@ if (runPlayground && playgroundFrame) {
 
 const themeToggle = document.getElementById('themeToggle');
 const menuToggle = document.getElementById('menuToggle');
-const navigation = document.querySelector('nav');
+const navigation = document.getElementById('primaryNavigation');
 
 if (menuToggle && navigation) {
     const navBackdrop = document.createElement('button');
