@@ -15,7 +15,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" href="assets/images/icons/app-icon-192.png" />
     <link rel="stylesheet" href="assets/css/style1.css?v=4" />
-    <link rel="stylesheet" href="assets/css/style-modern-v8.css" />
+    <link rel="stylesheet" href="assets/css/style-modern-v9.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -23,8 +23,27 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script>
+      (function () {
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+          window.navigator.standalone === true;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (isStandalone && !prefersReducedMotion) {
+          document.documentElement.classList.add('app-launch');
+        }
+      })();
+    </script>
   </head>
   <body>
+    <div class="app-launch-splash" aria-hidden="true">
+      <div class="app-launch-splash__content">
+        <div class="app-launch-splash__mark">
+          <img src="assets/images/icons/app-icon-192.png" alt="" width="192" height="192" />
+        </div>
+        <div class="app-launch-splash__name"><span>SOUL</span><span>PROGRAM</span></div>
+        <div class="app-launch-splash__loading"></div>
+      </div>
+    </div>
     <header>
       <a href="#home" class="logo" aria-label="Soul Program home">
         <img src="assets/images/icons/app-icon-192.png" alt="" width="44" height="44" />

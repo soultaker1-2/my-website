@@ -17,7 +17,7 @@ website/
 └── assets/
     ├── css/
     │   ├── style1.css          # Base site styles and layout
-    │   ├── style-modern-v8.css # App theme and responsive refinements
+    │   ├── style-modern-v9.css # App theme, responsive refinements, and launch animation
     │   ├── game.css            # Star Dodge styles
     │   └── archive/
     │       ├── style1.fixed.css # Older stylesheet; not currently linked
@@ -53,7 +53,7 @@ Each HTML page links to its stylesheets with `<link>` and loads JavaScript with 
 ## What the stylesheets do
 
 - **`assets/css/style1.css`** supplies the shared base styles, including the general page layout, typography, and components.
-- **`assets/css/style-modern-v8.css`** is loaded after the base file. It adds the app-matched dark/light theme, responsive navigation and layouts, modern cards, and refinements for lessons, videos, and forms. Because it loads second, its matching CSS rules can override the base styles.
+- **`assets/css/style-modern-v9.css`** is loaded after the base file. It adds the app-matched dark/light theme, responsive navigation and layouts, modern cards, a short installed-app launch animation, and refinements for lessons, videos, and forms. Because it loads second, its matching CSS rules can override the base styles.
 - **`assets/css/game.css`** styles only the standalone game page.
 - The site header and Star Dodge use the installed app icon and its navy, turquoise, and violet palette.
 - **`assets/css/archive/style1.fixed.css`** and **`assets/css/archive/video.css`** are kept for reference, but no current page loads them. The `video.css` file is empty.
@@ -82,6 +82,8 @@ This script is included by the main site pages. It checks for the relevant page 
 ### Install Soul Program as an app
 
 The site can be installed as a Progressive Web App from its HTTPS address. On Android or desktop Chrome/Edge, open the website and choose **Install app** from the browser menu or address bar. On iPhone/iPad, open it in Safari, tap **Share**, then **Add to Home Screen**. The app uses the same site and offline cache; it is not a separate App Store or Play Store app.
+
+The homepage shows a brief branded opening animation when launched in standalone app mode. It is skipped when the device requests reduced motion.
 
 ### `assets/js/game.js` — Star Dodge
 

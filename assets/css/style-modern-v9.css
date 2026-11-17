@@ -1675,3 +1675,132 @@ body.light-theme .lesson-code {
     transition-duration: 0.01ms !important;
   }
 }
+
+.app-launch-splash {
+  display: none;
+}
+
+html.app-launch .app-launch-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(97, 213, 198, 0.16), transparent 30rem),
+    radial-gradient(circle at 18% 82%, rgba(146, 119, 255, 0.14), transparent 26rem),
+    #09131e;
+  color: #f3f8fa;
+  pointer-events: none;
+  animation: app-launch-dismiss 420ms ease 1.12s forwards;
+}
+
+.app-launch-splash__content {
+  display: grid;
+  justify-items: center;
+  gap: 1.8rem;
+  animation: app-launch-enter 650ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.app-launch-splash__mark {
+  position: relative;
+  display: grid;
+  width: min(42vw, 15rem);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.app-launch-splash__mark::before {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(162, 238, 227, 0.2);
+  border-top-color: #61d5c6;
+  border-right-color: #9277ff;
+  border-radius: 50%;
+  content: "";
+  animation: app-launch-orbit 1.35s linear infinite;
+}
+
+.app-launch-splash__mark img {
+  width: 76%;
+  height: 76%;
+  border: 1px solid rgba(162, 238, 227, 0.35);
+  border-radius: 27%;
+  box-shadow: 0 0 3.5rem rgba(97, 213, 198, 0.2);
+  object-fit: cover;
+  animation: app-launch-pulse 1.6s ease-in-out infinite;
+}
+
+.app-launch-splash__name {
+  display: flex;
+  gap: 0.75rem;
+  font-size: clamp(1.7rem, 6vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+
+.app-launch-splash__name span:first-child {
+  color: #f3f8fa;
+}
+
+.app-launch-splash__name span:last-child {
+  color: #61d5c6;
+}
+
+.app-launch-splash__loading {
+  width: 8rem;
+  height: 0.3rem;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(243, 248, 250, 0.15);
+}
+
+.app-launch-splash__loading::after {
+  display: block;
+  width: 45%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #61d5c6, #9277ff);
+  content: "";
+  animation: app-launch-loading 850ms ease-in-out infinite alternate;
+}
+
+@keyframes app-launch-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes app-launch-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes app-launch-pulse {
+  50% {
+    transform: scale(0.96);
+  }
+}
+
+@keyframes app-launch-loading {
+  to {
+    transform: translateX(125%);
+  }
+}
+
+@keyframes app-launch-dismiss {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
